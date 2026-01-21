@@ -1,0 +1,290 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: rgb(var(--background-rgb));
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/BG1.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* optional - stays fixed when scrolling */
+}
+
+.header {
+  max-width: 1400px; /* was 1180px */
+  margin: 0 auto;
+  padding: 22px 22px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoMark {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px; /* keep if you still want a round crop */
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent; /* remove badge fill */
+  border: none;            /* remove circle border */
+}
+
+.logoMark :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brandText {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-end;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+
+  @import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap');
+  font-family: 'Canva Sans', sans-serif;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.main {
+  padding: 0 22px 26px;
+}
+
+.hero {
+  max-width: 1800px; /* was 1180px */
+  margin: 0 auto;
+  width: 100%;
+
+  height: min(900px, 85vh); /* taller (was ~560px / 72vh) */
+  border-radius: 36px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/Main-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scaleX(-1); /* flips horizontally */
+  z-index: 0;
+  opacity: 0.8;  /* 80% transparency */
+}
+
+.heroInner {
+  max-width: 1000px; /* text can breathe more (was 680px) */
+  padding: 92px 70px; /* slightly more vertical padding */
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 40px;
+  line-height: 1.12;
+  letter-spacing: -0.4px;
+  color: #0b0b0b;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.subtitle {
+  margin: 0 0 26px;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 560px;
+  color: #0b0b0b;
+  font-family: 'Crimson Text', serif;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 650;
+  color: rgba(0, 0, 0, 0.85);
+  background: rgba(255, 255, 255, 0.70);
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.ctaIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.heroImage {
+  opacity: 0.9;
+  /* keep all your other styles (flip, sizing, etc.) */
+}
+
+/* About Us Section */
+.aboutUs {
+  background-image: url("/images/BG2.png");
+  background-size: cover;
+  background-position: center;
+  height: min(900px, 85vh); /* same as hero */
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+}
+
+.aboutContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.aboutContent {
+  flex: 1;
+  max-width: 600px;
+}
+
+.aboutTitle {
+  font-size: 56px;  /* increased from 48px */
+  font-weight: 900;
+  margin: 0 0 24px;
+  color: #0b0b0b;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.aboutText {
+  font-size: 18px;  /* increased from 16px */
+  line-height: 1.7;
+  color: #0b0b0b;
+  margin: 0;
+  font-family: 'Crimson Text', serif;
+}
+
+.aboutImageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutImage {
+  width: 100%;
+  max-width: 500px;  /* increased from 350px */
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .brandText {
+    font-size: 34px;
+  }
+
+  .heroInner {
+    padding: 62px 26px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .aboutContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .aboutTitle {
+    font-size: 36px;
+  }
+
+  .aboutImage {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}
