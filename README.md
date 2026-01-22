@@ -211,37 +211,37 @@ shell-co/
 ```
 
 🎨 Features Details
-###1. Navigation & Header
+### 1. Navigation & Header
 -**Sticky header with logo and brand name
 -**Responsive navigation menu
 -**Smooth scroll behavior
 -**Active link highlighting
 
-###2. Hero Section
+### 2. Hero Section
 -**Full-screen background image
 -**Large, impactful headline
 -**Subtitle with description
 -**Call-to-action buttons
 -**Hover effects on buttons
 
-###3. About Us Section
--**Circular product image with hover animation
--**Rotate/tilt effect on hover (±8 degrees)
--**Responsive image sizing
--**Large typography for impact
+### 3. About Us Section
+- **Circular product image with hover animation
+- **Rotate/tilt effect on hover (±8 degrees)
+- **Responsive image sizing
+- **Large typography for impact
 
-###4. Services Section
+### 4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
-**5.service cards:
+- **5.service cards:
 1. Poultry Farming & Production
 2. Wholesale & Retail Distribution
 3. Custom Orders & Bulk Supply
 4. Quality Control & Processing
 5. Farm-to-Market Delivery
-**-Hover scale animation (1.1x zoom)
-**-Smooth transitions
+** -Hover scale animation (1.1x zoom)
+** -Smooth transitions
 
-###5. Products Section
+### 5. Products Section
 4.product categories displayed as cards
 **-Click to open detailed modal
 **-Products:
@@ -250,14 +250,14 @@ Grid layout (2 columns on desktop, 1 on mobile)
   -Chicken Meat (Pieces)
   -Poultry Feed & Supplies
 
-###6. Product Modal
+### 6. Product Modal
 **-Click outside to close
 **-Image carousel with prev/next buttons
 **-Product title and description
 **-Call-to-action button for feed products
 **-Smooth animations
 
-###7. Contact Us Section
+### 7. Contact Us Section
 -Two-column layout
 -Contact information with icons:
   -Facebook: ShellCo.
@@ -273,7 +273,7 @@ Grid layout (2 columns on desktop, 1 on mobile)
 -Email integration via Resend API
 -Form validation and error handling
 
-###8. Map Section
+### 8. Map Section
 -Interactive Leaflet.js map
 -Automatic user location detection (with permission)
 -Route from user to farm
@@ -282,7 +282,7 @@ Grid layout (2 columns on desktop, 1 on mobile)
 -Click marker to open Google Maps directions
 -Responsive map sizing
 
-###9. Footer
+### 9. Footer
 -Yellow background (#ffe177)
 -Copyright information
 -Professional styling
@@ -510,6 +510,7 @@ Course Name: Web Programming (Lab)
 Assignment: M1 Summative Part 3
 Institution: Web Programming Course
 Date: January 22, 2026
+
 📊 Project Statistics
 Total Features: 15+
 API Integrations: 4
@@ -518,6 +519,7 @@ Product Categories: 4
 Services: 5
 Animations: 10+
 Lines of Code: 1000+
+
 🔄 Version History
 v1.0.0 (January 22, 2026)
 Initial release
@@ -525,6 +527,7 @@ Core features implemented
 Map integration
 Email functionality
 Responsive design
+
 🎯 Future Enhancements
  Admin dashboard for product management
  Customer testimonials section
@@ -536,6 +539,7 @@ Responsive design
  Analytics dashboard
  SMS notifications
  WhatsApp integration
+ 
 🙏 Acknowledgments
 Next.js team for the amazing framework
 Leaflet.js for mapping
