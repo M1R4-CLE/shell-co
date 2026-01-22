@@ -232,7 +232,7 @@ shell-co/
 
 ### 4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
-- **5.service cards:
+- 5.service cards:
 1. Poultry Farming & Production
 2. Wholesale & Retail Distribution
 3. Custom Orders & Bulk Supply
@@ -245,33 +245,33 @@ Grid layout (2 columns on desktop, 1 on mobile)
 4.product categories displayed as cards
 **-Click to open detailed modal
 **-Products:
-  -Fresh Chicken Eggs
-  -Whole Chicken
-  -Chicken Meat (Pieces)
-  -Poultry Feed & Supplies
+- Fresh Chicken Eggs
+- Whole Chicken
+- Chicken Meat (Pieces)
+- Poultry Feed & Supplies
 
 ### 6. Product Modal
-**-Click outside to close
-**-Image carousel with prev/next buttons
-**-Product title and description
-**-Call-to-action button for feed products
-**-Smooth animations
+- Click outside to close
+- Image carousel with prev/next buttons
+- Product title and description
+- Call-to-action button for feed products
+- Smooth animations
 
 ### 7. Contact Us Section
 -Two-column layout
 -Contact information with icons:
-  -Facebook: ShellCo.
-  -Phone: 09948086975
-  -Viber: 9422 3649
-  -Telegram: @TheShellCo
-  -Email: m1corporation@gmail.com
+  - Facebook: ShellCo.
+  - Phone: 09948086975
+  - Viber: 9422 3649
+  - Telegram: @TheShellCo
+  - Email: m1corporation@gmail.com
 -Contact form with 4 fields:
-  -Your Name
-  -Your Email
-  -Your Phone Number
-  -Your Message
--Email integration via Resend API
--Form validation and error handling
+  - Your Name
+  - Your Email
+  - Your Phone Number
+  - Your Message
+- Email integration via Resend API
+- Form validation and error handling
 
 ### 8. Map Section
 -Interactive Leaflet.js map
