@@ -211,53 +211,53 @@ shell-co/
 ```
 
 🎨 Features Details
-1. Navigation & Header
--Sticky header with logo and brand name
--Responsive navigation menu
--Smooth scroll behavior
--Active link highlighting
+###1. Navigation & Header
+-**Sticky header with logo and brand name
+-**Responsive navigation menu
+-**Smooth scroll behavior
+-**Active link highlighting
 
-2. Hero Section
--Full-screen background image
--Large, impactful headline
--Subtitle with description
--Call-to-action buttons
--Hover effects on buttons
+###2. Hero Section
+-**Full-screen background image
+-**Large, impactful headline
+-**Subtitle with description
+-**Call-to-action buttons
+-**Hover effects on buttons
 
-3. About Us Section
--Circular product image with hover animation
--Rotate/tilt effect on hover (±8 degrees)
--Responsive image sizing
--Large typography for impact
+###3. About Us Section
+-**Circular product image with hover animation
+-**Rotate/tilt effect on hover (±8 degrees)
+-**Responsive image sizing
+-**Large typography for impact
 
-4. Services Section
+###4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
-V.service cards:
+**5.service cards:
 1. Poultry Farming & Production
 2. Wholesale & Retail Distribution
 3. Custom Orders & Bulk Supply
 4. Quality Control & Processing
 5. Farm-to-Market Delivery
--Hover scale animation (1.1x zoom)
--Smooth transitions
+**-Hover scale animation (1.1x zoom)
+**-Smooth transitions
 
-5. Products Section
+###5. Products Section
 4.product categories displayed as cards
--Click to open detailed modal
--Products:
+**-Click to open detailed modal
+**-Products:
   -Fresh Chicken Eggs
   -Whole Chicken
   -Chicken Meat (Pieces)
   -Poultry Feed & Supplies
 
-6. Product Modal
--Click outside to close
--Image carousel with prev/next buttons
--Product title and description
--Call-to-action button for feed products
--Smooth animations
+###6. Product Modal
+**-Click outside to close
+**-Image carousel with prev/next buttons
+**-Product title and description
+**-Call-to-action button for feed products
+**-Smooth animations
 
-7. Contact Us Section
+###7. Contact Us Section
 -Two-column layout
 -Contact information with icons:
   -Facebook: ShellCo.
@@ -273,7 +273,7 @@ V.service cards:
 -Email integration via Resend API
 -Form validation and error handling
 
-8. Map Section
+###8. Map Section
 -Interactive Leaflet.js map
 -Automatic user location detection (with permission)
 -Route from user to farm
@@ -282,7 +282,7 @@ V.service cards:
 -Click marker to open Google Maps directions
 -Responsive map sizing
 
-9. Footer
+###9. Footer
 -Yellow background (#ffe177)
 -Copyright information
 -Professional styling
