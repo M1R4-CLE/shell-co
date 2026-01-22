@@ -212,82 +212,81 @@ shell-co/
 
 🎨 Features Details
 1. Navigation & Header
-Sticky header with logo and brand name
-Responsive navigation menu
-Smooth scroll behavior
-Active link highlighting
+-Sticky header with logo and brand name
+-Responsive navigation menu
+-Smooth scroll behavior
+-Active link highlighting
 
 2. Hero Section
-Full-screen background image
-Large, impactful headline
-Subtitle with description
-Call-to-action buttons
-Hover effects on buttons
+-Full-screen background image
+-Large, impactful headline
+-Subtitle with description
+-Call-to-action buttons
+-Hover effects on buttons
 
 3. About Us Section
-Circular product image with hover animation
-Rotate/tilt effect on hover (±8 degrees)
-Responsive image sizing
-Large typography for impact
+-Circular product image with hover animation
+-Rotate/tilt effect on hover (±8 degrees)
+-Responsive image sizing
+-Large typography for impact
 
 4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
-
-5 service cards:
-Poultry Farming & Production
-Wholesale & Retail Distribution
-Custom Orders & Bulk Supply
-Quality Control & Processing
-Farm-to-Market Delivery
-Hover scale animation (1.1x zoom)
-Smooth transitions
+V.service cards:
+1. Poultry Farming & Production
+2. Wholesale & Retail Distribution
+3. Custom Orders & Bulk Supply
+4. Quality Control & Processing
+5. Farm-to-Market Delivery
+-Hover scale animation (1.1x zoom)
+-Smooth transitions
 
 5. Products Section
-1. product categories displayed as cards
-Click to open detailed modal
-Products:
-Fresh Chicken Eggs
-Whole Chicken
-Chicken Meat (Pieces)
-Poultry Feed & Supplies
+4.product categories displayed as cards
+-Click to open detailed modal
+-Products:
+  -Fresh Chicken Eggs
+  -Whole Chicken
+  -Chicken Meat (Pieces)
+  -Poultry Feed & Supplies
 
-2. Product Modal
-Click outside to close
-Image carousel with prev/next buttons
-Product title and description
-Call-to-action button for feed products
-Smooth animations
+6. Product Modal
+-Click outside to close
+-Image carousel with prev/next buttons
+-Product title and description
+-Call-to-action button for feed products
+-Smooth animations
 
-3. Contact Us Section
-Two-column layout
-Contact information with icons:
-Facebook: ShellCo.
-Phone: 09948086975
-Viber: 9422 3649
-Telegram: @TheShellCo
-Email: m1corporation@gmail.com
-Contact form with 4 fields:
-Your Name
-Your Email
-Your Phone Number
-Your Message
-Email integration via Resend API
-Form validation and error handling
+7. Contact Us Section
+-Two-column layout
+-Contact information with icons:
+  -Facebook: ShellCo.
+  -Phone: 09948086975
+  -Viber: 9422 3649
+  -Telegram: @TheShellCo
+  -Email: m1corporation@gmail.com
+-Contact form with 4 fields:
+  -Your Name
+  -Your Email
+  -Your Phone Number
+  -Your Message
+-Email integration via Resend API
+-Form validation and error handling
 
 8. Map Section
-Interactive Leaflet.js map
-Automatic user location detection (with permission)
-Route from user to farm
-Red pin marker for farm location
-Blue circle marker for user location
-Click marker to open Google Maps directions
-Responsive map sizing
+-Interactive Leaflet.js map
+-Automatic user location detection (with permission)
+-Route from user to farm
+-Red pin marker for farm location
+-Blue circle marker for user location
+-Click marker to open Google Maps directions
+-Responsive map sizing
 
 9. Footer
-Yellow background (#ffe177)
-Copyright information
-Professional styling
-Fully responsive
+-Yellow background (#ffe177)
+-Copyright information
+-Professional styling
+-Fully responsive
 
 🔌 API Integrations
 Resend Email API
