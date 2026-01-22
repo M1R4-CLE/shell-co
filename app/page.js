@@ -226,34 +226,85 @@ export default function Home() {
 
         <section className={styles.contact} id="contact">
   <div className={styles.contactContainer}>
-    <h2 className={styles.contactTitle}>Contact Us</h2>
-    
-    <form className={styles.contactForm}>
-      <div className={styles.formGroup}>
-        <input type="text" placeholder="Your Name" required />
+    <div className={styles.contactInfo}>
+      <h2 className={styles.contactTitle}>Contact Us</h2>
+      
+      <div className={styles.contactItem}>
+        <img src="/images/Social-Media_Icons/Facebook.png" alt="Facebook" />
+        <span>ShellCo.</span>
       </div>
       
-      <div className={styles.formGroup}>
-        <input type="email" placeholder="Your Email" required />
+      <div className={styles.contactItem}>
+        <img src="/images/Social-Media_Icons/Telephone.png" alt="Telephone" />
+        <span>09948086975</span>
       </div>
       
-      <div className={styles.formGroup}>
-        <input type="phone" placeholder="Your Phone Number" required />
+      <div className={styles.contactItem}>
+        <img src="/images/Social-Media_Icons/Viber.png" alt="Viber" />
+        <span>9422 3649</span>
       </div>
       
-      <div className={styles.formGroup}>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
+      <div className={styles.contactItem}>
+        <img src="/images/Social-Media_Icons/Telegram.png" alt="Telegram" />
+        <span>@TheShellCo</span>
       </div>
       
-      <button type="submit" className={styles.submitBtn}>
-        Send Message
-        <span className={styles.ctaIcon}>↗</span>
-      </button>
-    </form>
+      <div className={styles.contactItem}>
+        <img src="/images/Social-Media_Icons/Email.png" alt="Email" />
+        <span>m1corporation@gmail.com</span>
+      </div>
+    </div>
+
+    <div className={styles.contactFormWrapper}>
+      <h3 className={styles.consultationTitle}>Get a free consultation</h3>
+      <form className={styles.contactForm}>
+        <div className={styles.formGroup}>
+          <input type="text" placeholder="Your Name" required />
+        </div>
+        
+        <div className={styles.formGroup}>
+          <input type="email" placeholder="Your Email" required />
+        </div>
+        
+        <div className={styles.formGroup}>
+          <input type="phone" placeholder="Your Phone Number" required />
+        </div>
+        
+        <div className={styles.formGroup}>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" className={styles.submitBtn}>
+          Send Message
+          <span className={styles.ctaIcon}>↗</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+        <section className={styles.visitFarm}>
+  <div className={styles.visitContainer}>
+    <h2 className={styles.visitTitle}>Visit Shell Co.</h2>
+    <div className={styles.mapContainer}>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3520.707556186791!2d125.45105081347418!3d7.161199180456055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sph!4v1769072049404!5m2!1sen!2sph"
+        width="100%"
+        height="100%"
+        style={{ border: 0, borderRadius: "15px" }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
   </div>
 </section>
 
       </main>
+
+      <footer className={styles.footer}>
+  <p>Copyright 2026 | Web Programming (Lab) M1 Summative Part3 | IT103L.A223.2T.25.26 | Masapa Daryll Dave R.</p>
+</footer>
     </div>
   );
 }

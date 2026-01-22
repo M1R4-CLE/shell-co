@@ -63,7 +63,7 @@ html {
   font-size: 44px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(61, 61, 61, 0.9);  /* changed from 0.75 to 0.9 */
 }
 
 .nav {
@@ -253,20 +253,39 @@ html {
 
 .aboutImage {
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   height: 600px;
   border-radius: 50%;
   object-fit: cover;
-  transition: 0.3s ease;  /* ← add this */
+  transition: 0.3s ease;
+  filter: none;  /* remove any blur */
 }
 
 .aboutImage:hover {
   animation: shake 0.6s ease-in-out infinite;  /* ← add infinite */
 }
 
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 /* Services Section */
 .services {
-  background-image: url("/images/BG2.png");
+  background-image: url("/images/BG1.png");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -340,7 +359,7 @@ html {
 
 /* Products Section */
 .products {
-  background-image: url("/images/BG1.png");
+  background-image: url("/images/BG2.png");
   background-size: cover;
   background-position: center;
   height: 100vh;  /* ← changed to match services */
@@ -536,20 +555,28 @@ html {
 
 /* Contact Us Section */
 .contact {
-  background-image: url("/images/BG2.png");
-  background-size: 120% auto;
+  background-image: url("/images/BG1.png");
+  background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 80px 22px;
+  align-items: flex-start;  
+  padding: 8% 22px;
   width: 100%;
+  margin-top: 0;
 }
 
 .contactContainer {
-  max-width: 800px;
+  max-width: 1600px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  gap: -50px; 
+  align-items: flex-start;
+}
+
+.contactInfo {
+  flex: 1;
 }
 
 .contactTitle {
@@ -558,7 +585,37 @@ html {
   margin: 0 0 60px;
   color: #0b0b0b;
   font-family: 'Archivo Black', sans-serif;
-  text-align: center;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  font-size: 24px;
+  color: #0b0b0b;
+  font-family: 'Crimson Text', serif;
+  font-weight: 600;
+}
+
+.contactItem svg,
+.contactItem img {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.contactFormWrapper {
+  flex: 1;
+  max-width: 600px;
+}
+
+.consultationTitle {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 30px;
+  color: #0b0b0b;
+  font-family: 'Archivo Black', sans-serif;
 }
 
 .contactForm {
@@ -580,6 +637,12 @@ html {
   font-size: 16px;
   font-family: 'Crimson Text', serif;
   background: rgba(255, 255, 255, 0.9);
+  color: #0b0b0b;  
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .formGroup input:focus,
@@ -604,8 +667,8 @@ html {
   border: 2px solid rgba(0, 0, 0, 0.45);
   cursor: pointer;
   font-size: 16px;
-  align-self: center;
-  transition: all 0.3s ease;  /* ← add this */
+  align-self: flex-start;
+  transition: all 0.3s ease;
 }
 
 .submitBtn:hover {
@@ -613,38 +676,99 @@ html {
   transform: scale(1.1);
 }
 
-/* Keyframes */
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
+/* Visit Poultry Farm Section */
+.visitFarm {
+  background-image: url("/images/BG2.png");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 22px;
+  width: 100%;
+}
+
+.visitContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.visitTitle {
+  font-size: 56px;
+  font-weight: 900;
+  margin: 0 0 60px;
+  color: #0b0b0b;
+  font-family: 'Archivo Black', sans-serif;
+  text-align: center;
+}
+
+.mapContainer {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.mapContainer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Footer */
+.footer {
+  background: #ffe177;
+  color: #0b0b0b;
+  text-align: center;
+  padding: 25px 22px;
+  font-size: 13px;
+  font-family: 'Crimson Text', serif;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 1200px) {
+  .aboutContainer {
+    gap: 100px;
   }
-  25% {
-    transform: rotate(-5deg);
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
   }
-  50% {
-    transform: rotate(0deg);
+
+  .serviceCard {
+    width: 100%;
+    max-width: 600px;
   }
-  75% {
-    transform: rotate(5deg);
+
+  .productCard {
+    width: 100%;
+    max-width: 600px;
   }
-  100% {
-    transform: rotate(0deg);
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactContainer {
+    gap: 60px;
   }
 }
 
-@keyframes popUp {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Responsive tweaks */
 @media (max-width: 900px) {
   .brandText {
     font-size: 34px;
@@ -658,6 +782,10 @@ html {
     font-size: 34px;
   }
 
+  .subtitle {
+    font-size: 16px;
+  }
+
   .aboutContainer {
     flex-direction: column;
     gap: 40px;
@@ -665,24 +793,404 @@ html {
 
   .aboutTitle {
     font-size: 36px;
+    margin: 0 0 24px;
   }
 
   .aboutImage {
     max-width: 280px;
+    height: 400px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productCard {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .contactContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contactFormWrapper {
+    max-width: 100%;
+  }
+
+  .visitTitle {
+    font-size: 36px;
+  }
+
+  .mapContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    background-attachment: scroll;
+  }
+
+  .header {
+    padding: 16px 16px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .brand {
+    width: 100%;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    height: 60vh;
+    border-radius: 20px;
+  }
+
+  .heroInner {
+    padding: 40px 20px;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 28px;
+    margin: 0 0 16px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    max-width: 100%;
+    margin: 0 0 20px;
+  }
+
+  .cta {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .aboutUs {
+    background-size: cover;
+    height: auto;
+    padding: 40px 20px;
+    margin-top: 20px;
+  }
+
+  .aboutContainer {
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .aboutTitle {
+    font-size: 28px;
+    margin: 0 0 16px;
+  }
+
+  .aboutText {
+    font-size: 18px;
+  }
+
+  .services {
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  .servicesTitle {
+    font-size: 36px;
+    margin: 0 0 40px;
+  }
+
+  .serviceCard {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .serviceCardTitle {
+    font-size: 20px;
+  }
+
+  .serviceCard p {
+    font-size: 16px;
+  }
+
+  .products {
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  .productsTitle {
+    font-size: 36px;
+    margin: 0 0 40px;
+  }
+
+  .productCard {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .productCardTitle {
+    font-size: 20px;
+  }
+
+  .productCard p {
+    font-size: 16px;
+  }
+
+  .contact {
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  .contactContainer {
+    padding: 0;
+    gap: 30px;
+  }
+
+  .contactTitle {
+    font-size: 36px;
+  }
+
+  .contactItem {
+    margin-bottom: 25px;
+    font-size: 18px;
+    gap: 15px;
+  }
+
+  .consultationTitle {
+    font-size: 24px;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .visitFarm {
+    padding: 40px 20px;
+    min-height: 60vh;
+  }
+
+  .visitTitle {
+    font-size: 32px;
+    margin: 0 0 40px;
+  }
+
+  .mapContainer {
+    height: 300px;
+  }
+
+  .modalContent {
+    padding: 30px;
+    width: 90%;
+  }
+
+  .modalBody {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .carouselContainer {
+    margin-left: 0;
+    min-height: 300px;
+  }
+
+  .carouselImage {
+    width: 100%;
+    height: 250px;
+  }
+
+  .modalTitle {
+    font-size: 28px;
+  }
+
+  .modalDescription {
+    font-size: 16px;
   }
 }
 
 @media (max-width: 520px) {
   .header {
-    align-items: flex-start;
-    flex-direction: column;
+    padding: 12px 12px 8px;
   }
 
-  .nav {
-    justify-content: flex-start;
+  .brandText {
+    font-size: 24px;
+  }
+
+  .navLink {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .hero {
+    height: 50vh;
+    border-radius: 16px;
+  }
+
+  .heroInner {
+    padding: 30px 16px;
   }
 
   .title {
-    font-size: 30px;
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin: 0 0 16px;
+  }
+
+  .ctaRow {
+    gap: 10px;
+  }
+
+  .cta {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .ctaIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .aboutContainer {
+    padding: 0 16px;
+  }
+
+  .aboutTitle {
+    font-size: 24px;
+  }
+
+  .aboutText {
+    font-size: 16px;
+  }
+
+  .aboutImage {
+    max-width: 200px;
+    height: 300px;
+  }
+
+  .servicesTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+
+  .serviceCard {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .serviceCardTitle {
+    font-size: 18px;
+  }
+
+  .serviceCard p {
+    font-size: 14px;
+  }
+
+  .productsTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+
+  .productCard {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .productCardTitle {
+    font-size: 18px;
+  }
+
+  .productCard p {
+    font-size: 14px;
+  }
+
+  .contactTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+
+  .contactItem {
+    font-size: 16px;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+
+  .contactItem svg,
+  .contactItem img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .consultationTitle {
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .submitBtn {
+    height: 44px;
+    padding: 0 24px;
+    font-size: 14px;
+  }
+
+  .visitTitle {
+    font-size: 24px;
+    margin: 0 0 30px;
+  }
+
+  .mapContainer {
+    height: 200px;
+  }
+
+  .modalContent {
+    padding: 20px;
+  }
+
+  .modalTitle {
+    font-size: 24px;
+  }
+
+  .carouselImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .carouselBtn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
   }
 }
