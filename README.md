@@ -212,27 +212,27 @@ shell-co/
 
 🎨 Features Details
 ### 1. Navigation & Header
--**Sticky header with logo and brand name
--**Responsive navigation menu
--**Smooth scroll behavior
--**Active link highlighting
+- Sticky header with logo and brand name
+- Responsive navigation menu
+- Smooth scroll behavior
+- Active link highlighting
 
 ### 2. Hero Section
--**Full-screen background image
--**Large, impactful headline
--**Subtitle with description
--**Call-to-action buttons
--**Hover effects on buttons
+- Full-screen background image
+- Large, impactful headline
+- Subtitle with description
+- Call-to-action buttons
+- Hover effects on buttons
 
 ### 3. About Us Section
-- **Circular product image with hover animation
-- **Rotate/tilt effect on hover (±8 degrees)
-- **Responsive image sizing
-- **Large typography for impact
+- Circular product image with hover animation
+- Rotate/tilt effect on hover (±8 degrees)
+- Responsive image sizing
+- Large typography for impact
 
 ### 4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
-- 5.service cards:
+- 5 service cards:
 1. Poultry Farming & Production
 2. Wholesale & Retail Distribution
 3. Custom Orders & Bulk Supply
@@ -258,8 +258,8 @@ Grid layout (2 columns on desktop, 1 on mobile)
 - Smooth animations
 
 ### 7. Contact Us Section
--Two-column layout
--Contact information with icons:
+- Two-column layout
+- Contact information with icons:
   - Facebook: ShellCo.
   - Phone: 09948086975
   - Viber: 9422 3649
