@@ -6,6 +6,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import 'leaflet/dist/leaflet.css';
 
+
 export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -47,6 +48,139 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  const initMap = async () => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.async = true;
+
+    script.onload = async () => {
+      const farmLocation = [7.162054928946735, 125.45192125391031];
+
+      // Get user's current location
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const userLocation = [position.coords.latitude, position.coords.longitude];
+
+          try {
+            // Get route from user location to farm
+            const routeResponse = await fetch(
+              `https://api.geoapify.com/v1/routing?waypoints=${userLocation[0]},${userLocation[1]}|${farmLocation[0]},${farmLocation[1]}&mode=drive&apiKey=22ac35a9ac97450ca9b5a8ee3eba0d37`
+            );
+
+            const routeData = await routeResponse.json();
+            const map = window.L.map('map').setView(farmLocation, 14);
+
+            window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© OpenStreetMap',
+              maxZoom: 19,
+            }).addTo(map);
+
+            // Draw route
+            if (routeData.features && routeData.features[0]) {
+              const routeCoords = routeData.features[0].geometry.coordinates;
+              const polylineCoords = routeCoords.map(coord => [coord[1], coord[0]]);
+
+              window.L.polyline(polylineCoords, {
+                color: '#FF6B6B',
+                weight: 4,
+                opacity: 0.8,
+              }).addTo(map);
+            }
+
+            // User's location marker
+            window.L.marker(userLocation, {
+              icon: window.L.divIcon({
+                html: `
+                  <div style="
+                    width: 30px;
+                    height: 30px;
+                    background: #4A90E2;
+                    border: 3px solid white;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                  "></div>
+                `,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+                popupAnchor: [0, -15],
+              })
+            }).addTo(map).bindPopup('Your Location').openPopup();
+
+            // Farm location marker
+            const farmMarker = window.L.marker(farmLocation, {
+              icon: window.L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+              })
+            }).addTo(map).bindPopup('<strong>Shell Co. Poultry Farm</strong>');
+
+            // Click on marker to get directions
+            farmMarker.on('click', () => {
+              // Open Google Maps directions in new tab
+              const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${farmLocation[0]},${farmLocation[1]}`;
+              window.open(directionsUrl, '_blank');
+            });
+
+          } catch (error) {
+            console.error('Error loading route:', error);
+          }
+        },
+        (error) => {
+          console.log('Location access denied or unavailable');
+          // Fallback: just show farm location
+          const map = window.L.map('map').setView(farmLocation, 14);
+          window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+          window.L.marker(farmLocation).addTo(map).bindPopup('<strong>Shell Co. Poultry Farm</strong>');
+        }
+      );
+    };
+
+    document.head.appendChild(script);
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert('Message sent successfully!');
+        e.target.reset();
+      } else {
+        alert('Error sending message');
+      }
+    } catch (error) {
+      alert('Error: ' + error.message);
+    }
+  };
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -84,49 +218,8 @@ export default function Home() {
             <p className={styles.subtitle}>
               ShellCo Poultry Farm is a poultry business that raises healthy
               chickens to produce quality eggs and meat. It focuses on proper
-              care, cleanliness, and reliable production to serve the community.
+              care,
             </p>
-
-            <div className={styles.ctaRow}>
-              <a className={styles.cta} href="#services">
-                Explore poultry solutions
-                <span className={styles.ctaIcon} aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-
-              <a className={styles.cta} href="#contact">
-                Get a free consultation
-                <span className={styles.ctaIcon} aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.aboutUs} id="about">
-          <div className={styles.aboutContainer}>
-            <div className={styles.aboutContent}>
-              <h2 className={styles.aboutTitle}>About Us</h2>
-              <p className={styles.aboutText}>
-                ShellCo Poultry Farm is a modern agricultural business focused on
-                raising healthy, high-quality poultry to supply fresh eggs and
-                chicken products. The farm follows proper animal care, clean
-                facilities, and efficient feeding practices to ensure safe and
-                reliable production. ShellCo is committed to supporting local
-                communities by providing affordable poultry products while
-                maintaining sustainable and responsible farming operations.
-              </p>
-            </div>
-
-            <Image
-              src="/images/egg-nobg.png"
-              alt="ShellCo farm interior"
-              width={200}
-              height={1000}
-              className={styles.aboutImage}
-            />
           </div>
         </section>
 
@@ -251,27 +344,27 @@ export default function Home() {
       
       <div className={styles.contactItem}>
         <img src="/images/Social-Media_Icons/Email.png" alt="Email" />
-        <span>m1corporation@gmail.com</span>
+        <span>monecorporation1@gmail.com</span>
       </div>
     </div>
 
     <div className={styles.contactFormWrapper}>
       <h3 className={styles.consultationTitle}>Get a free consultation</h3>
-      <form className={styles.contactForm}>
+      <form className={styles.contactForm} onSubmit={handleFormSubmit}>
         <div className={styles.formGroup}>
-          <input type="text" placeholder="Your Name" required />
+          <input type="text" name="name" placeholder="Your Name" required />
         </div>
         
         <div className={styles.formGroup}>
-          <input type="email" placeholder="Your Email" required />
+          <input type="email" name="email" placeholder="Your Email" required />
         </div>
         
         <div className={styles.formGroup}>
-          <input type="phone" placeholder="Your Phone Number" required />
+          <input type="tel" name="phone" placeholder="Your Phone Number" required />
         </div>
         
         <div className={styles.formGroup}>
-          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         </div>
         
         <button type="submit" className={styles.submitBtn}>
@@ -286,20 +379,14 @@ export default function Home() {
         <section className={styles.visitFarm}>
   <div className={styles.visitContainer}>
     <h2 className={styles.visitTitle}>Visit Shell Co.</h2>
+    <p className={styles.visitDescription}>
+      Find our location, operating hours, and directions to the farm.
+    </p>
     <div className={styles.mapContainer}>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3520.707556186791!2d125.45105081347418!3d7.161199180456055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sph!4v1769072049404!5m2!1sen!2sph"
-        width="100%"
-        height="100%"
-        style={{ border: 0, borderRadius: "15px" }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <div id="map" style={{ width: '100%', height: '100%' }}></div>
     </div>
   </div>
 </section>
-
       </main>
 
       <footer className={styles.footer}>
@@ -307,4 +394,37 @@ export default function Home() {
 </footer>
     </div>
   );
+}
+
+export async function POST(request) {
+  const { name, email, phone, message } = await request.json();
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: 'monecorporation1@gmail.com', // Changed to your email
+      subject: `New Contact Form Submission from ${name}`,
+      html: `
+        <h2>New Message from Shell Co. Website</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+
+    return Response.json({ success: true, message: 'Email sent!' });
+  } catch (error) {
+    console.error('Email error:', error);
+    return Response.json({ success: false, error: error.message }, { status: 500 });
+  }
 }
