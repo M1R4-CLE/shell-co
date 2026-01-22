@@ -114,44 +114,101 @@ A modern, fully-responsive website for Shell Co. Poultry Farm built with Next.js
 ```bash
 git clone https://github.com/yourusername/shell-co.git
 cd shell-co
+```
 
 Step 2: Install Dependencies
+```bash
 npm install
-
+```
 Step 3: Install Resend (Email Service)
+```bash
 npm install resend
-
+```
 Step 4: Create Environment Variables
 Create a .env.local file in the root directory:
+```bash
 touch .env.local
-
+```
 🔐 Environment Setup
 Required Environment Variables
 Create .env.local with the following:
-
+```bash
 # Email Service (Resend)
 RESEND_API_KEY=your_resend_api_key_here
 
 # Mapping Service (Geoapify)
 NEXT_PUBLIC_GEOAPIFY_API_KEY=22ac35a9ac97450ca9b5a8ee3eba0d37
+```
 
 Getting Resend API Key
-Visit resend.com
-Sign up for a free account
-Go to API Keys section
-Create a new API key
-Copy and paste into .env.local
+1. Visit resend.com
+2. Sign up for a free account
+3. Go to API Keys section
+4. Create a new API key
+5. Copy and paste into .env.local
+
 Getting Geoapify API Key
-Visit geoapify.com
-Sign up for free
-Go to Dashboard → API Keys
-Copy your API key (already provided: 22ac35a9ac97450ca9b5a8ee3eba0d37)
-Add to .env.local
+
+1. Visit geoapify.com
+2. Sign up for free
+3. Go to Dashboard → API Keys
+4. Copy your API key (already provided: 22ac35a9ac97450ca9b5a8ee3eba0d37)
+5. Add to .env.local
 
 🚀 Getting Started
 Development Mode
 Start the development server:
+```bash
 npm run dev
+```
+Open http://localhost:3000 in your browser.
+
+Production Build
+Build for production:
+```bash
+npm run build
+npm run start
+```
+Linting
+Check for code issues:
+```bash
+npm run lint
+```
+📁 Project Structure
+```bash
+shell-co/
+├── app/
+│   ├── layout.js                    # Root layout component
+│   ├── page.js                      # Main page (all sections)
+│   ├── page.module.css              # All styling
+│   └── api/
+│       └── send-email/
+│           └── route.js             # Email API endpoint
+├── public/
+│   └── images/
+│       ├── BG1.png                  # Background image 1
+│       ├── BG2.png                  # Background image 2
+│       ├── Main-image.png           # Hero section image
+│       ├── ShellCo-notext-bg.png    # Logo
+│       ├── Chicken/                 # Product images
+│       │   ├── Brown_EggTray.png
+│       │   ├── White_Egg_Tray.png
+│       │   ├── Whole_Chicken1.png
+│       │   └── ... (more images)
+│       ├── Frozen_Chicken products/ # Frozen product images
+│       └── Social-Media_Icons/      # Contact icons
+│           ├── Facebook.png
+│           ├── Viber.png
+│           ├── Telephone.png
+│           ├── Telegram.png
+│           └── Email.png
+├── .env.local                       # Environment variables (not committed)
+├── .gitignore                       # Git ignore file
+├── package.json                     # Dependencies and scripts
+├── package-lock.json                # Dependency lock file
+├── README.md                        # This file
+└── next.config.js                   # Next.js configuration
+```
 
 🎨 Features Details
 1. Navigation & Header
@@ -159,19 +216,23 @@ Sticky header with logo and brand name
 Responsive navigation menu
 Smooth scroll behavior
 Active link highlighting
+
 2. Hero Section
 Full-screen background image
 Large, impactful headline
 Subtitle with description
 Call-to-action buttons
 Hover effects on buttons
+
 3. About Us Section
 Circular product image with hover animation
 Rotate/tilt effect on hover (±8 degrees)
 Responsive image sizing
 Large typography for impact
+
 4. Services Section
 Grid layout (2 columns on desktop, 1 on mobile)
+
 5 service cards:
 Poultry Farming & Production
 Wholesale & Retail Distribution
@@ -180,6 +241,7 @@ Quality Control & Processing
 Farm-to-Market Delivery
 Hover scale animation (1.1x zoom)
 Smooth transitions
+
 5. Products Section
 4 product categories displayed as cards
 Click to open detailed modal
@@ -188,12 +250,14 @@ Fresh Chicken Eggs
 Whole Chicken
 Chicken Meat (Pieces)
 Poultry Feed & Supplies
+
 6. Product Modal
 Click outside to close
 Image carousel with prev/next buttons
 Product title and description
 Call-to-action button for feed products
 Smooth animations
+
 7. Contact Us Section
 Two-column layout
 Contact information with icons:
@@ -209,6 +273,7 @@ Your Phone Number
 Your Message
 Email integration via Resend API
 Form validation and error handling
+
 8. Map Section
 Interactive Leaflet.js map
 Automatic user location detection (with permission)
@@ -217,6 +282,7 @@ Red pin marker for farm location
 Blue circle marker for user location
 Click marker to open Google Maps directions
 Responsive map sizing
+
 9. Footer
 Yellow background (#ffe177)
 Copyright information
@@ -228,20 +294,21 @@ Resend Email API
 Endpoint: /api/send-email
 
 Request Body:
-
+```bash
 {
   "name": "John Doe",
   "email": "john@example.com",
   "phone": "09123456789",
   "message": "I'm interested in your products"
 }
-
+```
 Response:
+```bash
 {
   "success": true,
   "message": "Email sent successfully!"
 }
-
+```
 Email Received At: monecorporation1@gmail.com
 
 Geoapify Routing API
@@ -264,7 +331,9 @@ Google Maps Directions
 Purpose: Open directions in Google Maps when clicking marker
 
 URL Format:
+```
 https://www.google.com/maps/dir/?api=1&destination=7.162054928946735,125.45192125391031
+```
 Browser Geolocation API
 Purpose: Get user's current location
 
@@ -275,33 +344,34 @@ Fallback: If permission denied, map shows only farm location
 🎨 Customization
 Colors
 Update in page.module.css:
-
+```
 /* Primary Colors */
 --primary-yellow: #ffe177;
 --primary-brown: #b4a078;
 --dark-text: #0b0b0b;
 --light-text: rgba(255, 255, 255, 0.9);
-
+```
 Contact Information
 Edit in page.js contact section:
-
+```
 <div className={styles.contactItem}>
   <img src="/images/Social-Media_Icons/[icon].png" alt="[Name]" />
   <span>[Your Contact Info]</span>
 </div>
-
+```
 Farm Location
 Update coordinates in page.js initMap function:
+```
 const farmLocation = [7.162054928946735, 125.45192125391031];
-
+```
 Email Recipient
 Change in app/api/send-email/route.js:
-
+```
 to: 'your-email@gmail.com', // Change this
-
+```
 Products
 Edit productDetails object in page.js:
-
+```
 const productDetails = {
   eggs: {
     title: 'Product Name',
@@ -310,8 +380,9 @@ const productDetails = {
   },
   // ... more products
 };
-
+```
 📱 Responsive Breakpoints
+```
 /* Mobile: 520px and below */
 @media (max-width: 520px) { }
 
@@ -320,44 +391,49 @@ const productDetails = {
 
 /* Desktop: 1200px and above */
 @media (max-width: 1200px) { }
-
+```
 🚢 Deployment
 Deploy on Vercel (Recommended)
-Push to GitHub
-
+1. Push to GitHub
+```
 git add .
 git commit -m "Initial commit"
 git push origin main
-
-Connect to Vercel
+```
+2. Connect to Vercel
 
 Go to vercel.com
 Click "New Project"
 Import your GitHub repository
-Add Environment Variables
 
+3.Add Environment Variables
 In Vercel dashboard: Settings → Environment Variables
 Add:
 RESEND_API_KEY
 NEXT_PUBLIC_GEOAPIFY_API_KEY
-Deploy
+
+4. Deploy
 
 Click "Deploy"
 Wait for deployment to complete
 Get your live URL
+
 Add Custom Domain
-In Vercel: Settings → Domains
-Add your custom domain
-Update DNS records as shown
-Wait for SSL certificate (usually 5-10 minutes)
+
+1. In Vercel: Settings → Domains
+2. Add your custom domain
+3. Update DNS records as shown
+4. Wait for SSL certificate (usually 5-10 minutes)
+
 Deploy on Other Platforms
-Netlify: Use next export then deploy static site
-AWS: Use Amplify or EC2 with Node.js
-DigitalOcean: App Platform or Droplet with Node.js
-Heroku: Use buildpack for Next.js
+1. Netlify: Use next export then deploy static site
+2. AWS: Use Amplify or EC2 with Node.js
+3. DigitalOcean: App Platform or Droplet with Node.js
+4. Heroku: Use buildpack for Next.js
 
 🐛 Troubleshooting
 Issue: Email Not Sending
+
 Solution:
 
 Verify RESEND_API_KEY in .env.local
@@ -365,6 +441,7 @@ Check Resend dashboard for API key
 Ensure form data is complete
 Check browser console for errors (F12)
 Issue: Map Not Displaying
+
 Solution:
 
 Verify NEXT_PUBLIC_GEOAPIFY_API_KEY is set
@@ -372,6 +449,7 @@ Allow location permission in browser
 Check browser console for errors
 Clear browser cache and reload
 Issue: Form Validation Errors
+
 Solution:
 
 Ensure all form fields are filled
@@ -379,6 +457,7 @@ Check email format is valid
 Verify form handler function exists
 Check browser console for errors
 Issue: Images Not Loading
+
 Solution:
 
 Verify image paths in images
@@ -386,6 +465,7 @@ Use forward slashes: /images/...
 Check image file names match exactly
 Restart development server
 Issue: Styling Not Applied
+
 Solution:
 
 Clear browser cache (Ctrl+Shift+Delete)
@@ -393,14 +473,15 @@ Restart development server (npm run dev)
 Check CSS class names match in HTML
 Verify .module.css file syntax
 Issue: "Module not found" Error
+
 Solution:
 
 Run npm install to install dependencies
 Delete node_modules and reinstall:
-
+```
 rm -rf node_modules package-lock.json
 npm install
-
+```
 Restart development server
 
 📞 Contact & Support
