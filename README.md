@@ -243,7 +243,7 @@ Hover scale animation (1.1x zoom)
 Smooth transitions
 
 5. Products Section
-4 product categories displayed as cards
+1. product categories displayed as cards
 Click to open detailed modal
 Products:
 Fresh Chicken Eggs
@@ -251,14 +251,14 @@ Whole Chicken
 Chicken Meat (Pieces)
 Poultry Feed & Supplies
 
-6. Product Modal
+2. Product Modal
 Click outside to close
 Image carousel with prev/next buttons
 Product title and description
 Call-to-action button for feed products
 Smooth animations
 
-7. Contact Us Section
+3. Contact Us Section
 Two-column layout
 Contact information with icons:
 Facebook: ShellCo.
