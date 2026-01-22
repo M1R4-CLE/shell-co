@@ -152,3 +152,321 @@ Add to .env.local
 Development Mode
 Start the development server:
 npm run dev
+
+🎨 Features Details
+1. Navigation & Header
+Sticky header with logo and brand name
+Responsive navigation menu
+Smooth scroll behavior
+Active link highlighting
+2. Hero Section
+Full-screen background image
+Large, impactful headline
+Subtitle with description
+Call-to-action buttons
+Hover effects on buttons
+3. About Us Section
+Circular product image with hover animation
+Rotate/tilt effect on hover (±8 degrees)
+Responsive image sizing
+Large typography for impact
+4. Services Section
+Grid layout (2 columns on desktop, 1 on mobile)
+5 service cards:
+Poultry Farming & Production
+Wholesale & Retail Distribution
+Custom Orders & Bulk Supply
+Quality Control & Processing
+Farm-to-Market Delivery
+Hover scale animation (1.1x zoom)
+Smooth transitions
+5. Products Section
+4 product categories displayed as cards
+Click to open detailed modal
+Products:
+Fresh Chicken Eggs
+Whole Chicken
+Chicken Meat (Pieces)
+Poultry Feed & Supplies
+6. Product Modal
+Click outside to close
+Image carousel with prev/next buttons
+Product title and description
+Call-to-action button for feed products
+Smooth animations
+7. Contact Us Section
+Two-column layout
+Contact information with icons:
+Facebook: ShellCo.
+Phone: 09948086975
+Viber: 9422 3649
+Telegram: @TheShellCo
+Email: m1corporation@gmail.com
+Contact form with 4 fields:
+Your Name
+Your Email
+Your Phone Number
+Your Message
+Email integration via Resend API
+Form validation and error handling
+8. Map Section
+Interactive Leaflet.js map
+Automatic user location detection (with permission)
+Route from user to farm
+Red pin marker for farm location
+Blue circle marker for user location
+Click marker to open Google Maps directions
+Responsive map sizing
+9. Footer
+Yellow background (#ffe177)
+Copyright information
+Professional styling
+Fully responsive
+
+🔌 API Integrations
+Resend Email API
+Endpoint: /api/send-email
+
+Request Body:
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "09123456789",
+  "message": "I'm interested in your products"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Email sent successfully!"
+}
+
+Email Received At: monecorporation1@gmail.com
+
+Geoapify Routing API
+Purpose: Calculate driving route from user location to farm
+
+Endpoint: https://api.geoapify.com/v1/routing
+
+Parameters:
+
+waypoints: User location | Farm location
+mode: drive
+apiKey: Your Geoapify API key
+Farm Coordinates:
+
+Latitude: 7.162054928946735
+Longitude: 125.45192125391031
+Location: Mindanao, Philippines
+
+Google Maps Directions
+Purpose: Open directions in Google Maps when clicking marker
+
+URL Format:
+https://www.google.com/maps/dir/?api=1&destination=7.162054928946735,125.45192125391031
+Browser Geolocation API
+Purpose: Get user's current location
+
+Permission: Requires user consent
+
+Fallback: If permission denied, map shows only farm location
+
+🎨 Customization
+Colors
+Update in page.module.css:
+
+/* Primary Colors */
+--primary-yellow: #ffe177;
+--primary-brown: #b4a078;
+--dark-text: #0b0b0b;
+--light-text: rgba(255, 255, 255, 0.9);
+
+Contact Information
+Edit in page.js contact section:
+
+<div className={styles.contactItem}>
+  <img src="/images/Social-Media_Icons/[icon].png" alt="[Name]" />
+  <span>[Your Contact Info]</span>
+</div>
+
+Farm Location
+Update coordinates in page.js initMap function:
+const farmLocation = [7.162054928946735, 125.45192125391031];
+
+Email Recipient
+Change in app/api/send-email/route.js:
+
+to: 'your-email@gmail.com', // Change this
+
+Products
+Edit productDetails object in page.js:
+
+const productDetails = {
+  eggs: {
+    title: 'Product Name',
+    description: 'Product description...',
+    images: ['/images/path/to/image.png']
+  },
+  // ... more products
+};
+
+📱 Responsive Breakpoints
+/* Mobile: 520px and below */
+@media (max-width: 520px) { }
+
+/* Tablet: 768px - 900px */
+@media (max-width: 768px) { }
+
+/* Desktop: 1200px and above */
+@media (max-width: 1200px) { }
+
+🚢 Deployment
+Deploy on Vercel (Recommended)
+Push to GitHub
+
+git add .
+git commit -m "Initial commit"
+git push origin main
+
+Connect to Vercel
+
+Go to vercel.com
+Click "New Project"
+Import your GitHub repository
+Add Environment Variables
+
+In Vercel dashboard: Settings → Environment Variables
+Add:
+RESEND_API_KEY
+NEXT_PUBLIC_GEOAPIFY_API_KEY
+Deploy
+
+Click "Deploy"
+Wait for deployment to complete
+Get your live URL
+Add Custom Domain
+In Vercel: Settings → Domains
+Add your custom domain
+Update DNS records as shown
+Wait for SSL certificate (usually 5-10 minutes)
+Deploy on Other Platforms
+Netlify: Use next export then deploy static site
+AWS: Use Amplify or EC2 with Node.js
+DigitalOcean: App Platform or Droplet with Node.js
+Heroku: Use buildpack for Next.js
+
+🐛 Troubleshooting
+Issue: Email Not Sending
+Solution:
+
+Verify RESEND_API_KEY in .env.local
+Check Resend dashboard for API key
+Ensure form data is complete
+Check browser console for errors (F12)
+Issue: Map Not Displaying
+Solution:
+
+Verify NEXT_PUBLIC_GEOAPIFY_API_KEY is set
+Allow location permission in browser
+Check browser console for errors
+Clear browser cache and reload
+Issue: Form Validation Errors
+Solution:
+
+Ensure all form fields are filled
+Check email format is valid
+Verify form handler function exists
+Check browser console for errors
+Issue: Images Not Loading
+Solution:
+
+Verify image paths in images
+Use forward slashes: /images/...
+Check image file names match exactly
+Restart development server
+Issue: Styling Not Applied
+Solution:
+
+Clear browser cache (Ctrl+Shift+Delete)
+Restart development server (npm run dev)
+Check CSS class names match in HTML
+Verify .module.css file syntax
+Issue: "Module not found" Error
+Solution:
+
+Run npm install to install dependencies
+Delete node_modules and reinstall:
+
+rm -rf node_modules package-lock.json
+npm install
+
+Restart development server
+
+📞 Contact & Support
+Farm Contact Information:
+
+Email: monecorporation1@gmail.com
+Facebook: ShellCo.
+Viber: 9422 3649
+Phone: 09948086975
+Telegram: @TheShellCo
+Farm Location:
+
+Coordinates: 7.162054928946735, 125.45192125391031
+Region: Mindanao, Philippines
+📄 License
+This project is proprietary software owned by Shell Co. Poultry Farm. All rights reserved.
+
+Unauthorized copying, modification, or distribution is prohibited.
+
+👨‍💻 Author
+Created by: Masapa Daryll Dave R.
+
+Course Information:
+
+Course Code: IT103L.A223.2T.25.26
+Course Name: Web Programming (Lab)
+Assignment: M1 Summative Part 3
+Institution: Web Programming Course
+Date: January 22, 2026
+📊 Project Statistics
+Total Features: 15+
+API Integrations: 4
+Responsive Breakpoints: 3
+Product Categories: 4
+Services: 5
+Animations: 10+
+Lines of Code: 1000+
+🔄 Version History
+v1.0.0 (January 22, 2026)
+Initial release
+Core features implemented
+Map integration
+Email functionality
+Responsive design
+🎯 Future Enhancements
+ Admin dashboard for product management
+ Customer testimonials section
+ Blog/news section
+ Online ordering system
+ Payment integration (Stripe/PayPal)
+ Multi-language support (Tagalog, English)
+ Live chat support
+ Analytics dashboard
+ SMS notifications
+ WhatsApp integration
+🙏 Acknowledgments
+Next.js team for the amazing framework
+Leaflet.js for mapping
+Geoapify for routing API
+Resend for email service
+OpenStreetMap contributors
+Last Updated: January 22, 2026
+
+Repository: https://github.com/yourusername/shell-co
+
+Live Demo: https://shell-co.vercel.app
+
+Made with ❤️ for Shell Co. Poultry Farm
+
