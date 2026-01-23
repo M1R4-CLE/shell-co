@@ -211,76 +211,80 @@ html {
 /* About Us Section */
 .aboutUs {
   background-image: url("/images/BG2.png");
-  background-size: 120% auto;  /* changed from cover */
+  background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
   align-items: center;
-  padding: 2 2px;
-  margin-top: 40px;
+  padding: 80px 22px;
+  width: 100%;
+  margin-top: 0px;
 }
 
 .aboutContainer {
   max-width: 1600px;
-  margin: 20px auto;
-  padding: 0 50px;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 430px;  /* increased from 60px */
+  gap: 100px;
 }
 
 .aboutContent {
   flex: 1;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .aboutTitle {
-  font-size: 56px;
+  font-size: 56px; /* Match .servicesTitle */
   font-weight: 900;
-  margin: -310px 0 24px;  /* changed from 0 0 24px */
+  margin: 0 0 40px;
   color: #0b0b0b;
   font-family: 'Archivo Black', sans-serif;
 }
 
 .aboutText {
-  font-size: 24px;  /* increased from 18px */
-  line-height: 1.7;
+  font-size: 26.8px; /* Match .serviceCard p */
+  line-height: 1.6;
   color: #0b0b0b;
   margin: 0;
   font-family: 'Crimson Text', serif;
 }
 
 .aboutImage {
-  width: 100%;
-  max-width: 500px;
-  height: 600px;
-  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   object-fit: cover;
-  transition: 0.3s ease;
-  filter: none;  /* remove any blur */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
 }
 
-.aboutImage:hover {
-  animation: shake 0.6s ease-in-out infinite;  /* ← add infinite */
+.aboutEggImage {
+  width: 650px;
+  height: 650px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.15));
+  margin-left: 80px;
+  transition: transform 0.2s;
 }
 
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(8deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+@keyframes shakeLeftRight {
+  0% { transform: rotate(0deg);}
+  10% { transform: rotate(-8deg);}
+  20% { transform: rotate(8deg);}
+  30% { transform: rotate(-8deg);}
+  40% { transform: rotate(8deg);}
+  50% { transform: rotate(-8deg);}
+  60% { transform: rotate(8deg);}
+  70% { transform: rotate(-8deg);}
+  80% { transform: rotate(8deg);}
+  90% { transform: rotate(-8deg);}
+  100% { transform: rotate(0deg);}
+}
+
+.aboutEggImage:hover {
+  animation: shakeLeftRight 0.7s infinite linear;
 }
 
 /* Services Section */
@@ -300,6 +304,11 @@ html {
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Align content to the top */
+  height: 100%;
+  padding-top: -100px;               /* No extra top padding */
 }
 
 .servicesTitle {
@@ -314,7 +323,8 @@ html {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  
   gap: 30px;
-  justify-items: center;  /* ← add this to center cards */
+  justify-items: center;
+  margin-top: -60;                /* Remove any extra top margin */
 }
 
 .serviceCard {
@@ -357,15 +367,30 @@ html {
   font-family: 'Crimson Text', serif;
 }
 
+.cardType {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.cardSizes {
+  font-size: 0.95rem;
+  color: #444;
+  text-align: center;
+  margin-top: 4px;
+}
+
 /* Products Section */
 .products {
   background-image: url("/images/BG2.png");
   background-size: cover;
   background-position: center;
-  height: 100vh;  /* ← changed to match services */
+  height: 700px;
   display: flex;
-  align-items: center;
-  padding: 80px 22px;
+  align-items: flex-start;      /* Align content to the top */
+  padding: 20px 22px 80px 22px; /* Top padding reduced to 20px */
   width: 100%;
   margin-top: 0px;
 }
@@ -376,57 +401,110 @@ html {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;  /* Align content to the top */
   height: 100%;
+  padding-top: 80px;  
+  margin-left: 200px;/* No extra top padding */
+}
+
+.productsHeader {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 80px;
+  margin-top: 100px; /* Increase this value to move them further down */
+  margin-bottom: 0;
+  margin-left: 300px;
 }
 
 .productsTitle {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 900;
-  margin: -100px 0 80px;  /* add negative margin like services */
+  margin: 0 24px 0 0;
   color: #0b0b0b;
   font-family: 'Archivo Black', sans-serif;
 }
 
-.productsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  justify-items: center;  /* ← add this to center cards */
+.productsSearch {
+  font-size: 18px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 2px solid #222;
+  outline: none;
+  background: #fffbe9;
+  color: #0b0b0b;
+  font-family: inherit;
+  width: 600px;
+  max-width: 100%;
+  margin-left: 300px;
+}
+
+.eggCategory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.categoryTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 16px;
+  font-family: 'Archivo Black', sans-serif;
+  color: #000; /* Make the text black */
+}
+
+.eggCardsRow {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 .productCard {
+  width: 220px;
+  height: 370px;
   background: rgba(180, 160, 120, 0.85);
-  padding: 30px;
-  border-radius: 20px;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  width: 708px;
-  height: 195px;
+  border-radius: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: all 0.3s ease;  /* ← add this */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  transition: width 0.2s, height 0.2s;
 }
 
-.productCard:hover {
-  transform: scale(1.1);  /* ← add this */
+.meatProductCard {
+  width: 220px;
+  height: 370px;
+  background: rgba(180, 160, 120, 0.85);
+  border-radius: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 16px;
+  box-sizing: border-box;
 }
 
-.productCardTitle {
-  font-size: 26.8px;
-  font-weight: 900;
-  margin: 0 0 12px;
-  color: #0b0b0b;
-  font-family: 'Archivo Black', sans-serif;
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.productCard p {
-  font-size: 26.8px;
-  line-height: 1.6;
-  color: #0b0b0b;
-  margin: 0;
-  font-family: 'Crimson Text', serif;
+.cardDesc {
+  font-size: 1rem;
+  text-align: center;
+  color: #222;
 }
 
 /* Modal Styles */
@@ -567,16 +645,23 @@ html {
 }
 
 .contactContainer {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  width: 100%;
-  display: flex;
-  gap: -50px; 
-  align-items: flex-start;
 }
 
 .contactInfo {
   flex: 1;
+}
+
+.contactFormWrapper {
+  flex: 2;
+  max-width: none;
+  width: 100%;
+  margin-left: 0px;
 }
 
 .contactTitle {
@@ -585,12 +670,13 @@ html {
   margin: 0 0 60px;
   color: #0b0b0b;
   font-family: 'Archivo Black', sans-serif;
+  margin-top: -27px;
 }
 
 .contactItem {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px; /* Reduced from 20px */
   margin-bottom: 40px;
   font-size: 24px;
   color: #0b0b0b;
@@ -750,6 +836,109 @@ html {
   letter-spacing: 0.5px;
 }
 
+.wholeChickenCategory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.wholeChickenCardsRow {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.loweredCard {
+  margin-top: -32px; /* Adjust this value as needed */
+}
+
+.largerImage {
+  width: 200px;   /* or try 120px for even bigger */
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 24px;
+  margin-top: 10px; /* Adjust this value as needed */
+}
+
+.imgMargin3kg {
+  margin-top: 22px; 
+  margin-bottom: 34px;
+}
+
+.imgMarginBulk {
+  margin-top: 20px; 
+  margin-bottom: 34px;
+}
+
+.bulkTitle {
+  margin-top: -19px; /* Moves the title down */
+}
+
+.bulkType {
+  margin-top: -10px; /* Moves the type down */
+}
+
+.bulkSizes {
+  margin-top: 12px; /* Moves the sizes down */
+}
+
+.chickenMeatCategory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.carouselRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;   /* Ensure horizontal layout */
+  gap: 16px;             /* Space between cards and arrows */
+  margin-top: 8px;
+}
+
+.carouselCards {
+  display: flex;
+  flex-direction: row;   /* Horizontal cards */
+  gap: 32px;             /* Space between cards */
+}
+
+.carouselArrow {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #111;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0 12px;
+  transition: color 0.2s;
+}
+.carouselArrow:hover {
+  color: #b4a078;
+}
+
+.poultryFeedsCategory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.poultryFeedsCardsRow {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
 @media (max-width: 1200px) {
   .aboutContainer {
     gap: 100px;
@@ -795,19 +984,23 @@ html {
     font-size: 16px;
   }
 
+  .aboutUs {
+    padding: 40px 20px;
+    height: auto;
+  }
   .aboutContainer {
     flex-direction: column;
     gap: 40px;
   }
-
+  .aboutImage {
+    width: 300px;
+    height: 300px;
+  }
   .aboutTitle {
     font-size: 36px;
-    margin: 0 0 24px;
   }
-
-  .aboutImage {
-    max-width: 280px;
-    height: 400px;
+  .aboutText {
+    font-size: 16px;
   }
 
   .servicesGrid {
@@ -843,6 +1036,18 @@ html {
 
   .mapContainer {
     height: 350px;
+  }
+
+  .productCard {
+    width: 160px;
+    height: 270px;
+    padding: 16px 8px;
+  }
+  .eggCardsRow,
+  .wholeChickenCardsRow,
+  .poultryFeedsCardsRow,
+  .carouselCards {
+    gap: 16px;
   }
 }
 
@@ -1008,33 +1213,30 @@ html {
   .mapContainer {
     height: 300px;
   }
+}
 
-  .modalContent {
-    padding: 30px;
-    width: 90%;
+@media (max-width: 600px) {
+  .carouselCards {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    /* Show scrollbar on mobile */
+    /* Firefox */
+    scrollbar-width: thin;
+    /* IE and Edge */
+    -ms-overflow-style: auto;
   }
-
-  .modalBody {
-    flex-direction: column;
-    gap: 30px;
+  /* Chrome, Safari, Opera */
+  .carouselCards::-webkit-scrollbar {
+    height: 6px;
+    background: #e0cfa3;
   }
-
-  .carouselContainer {
-    margin-left: 0;
-    min-height: 300px;
-  }
-
-  .carouselImage {
-    width: 100%;
-    height: 250px;
-  }
-
-  .modalTitle {
-    font-size: 28px;
-  }
-
-  .modalDescription {
-    font-size: 16px;
+  .carouselCards::-webkit-scrollbar-thumb {
+    background: #b4a078;
+    border-radius: 3px;
   }
 }
 
@@ -1168,7 +1370,6 @@ html {
     font-size: 13px;
     border-radius: 8px;
   }
-
   .submitBtn {
     height: 44px;
     padding: 0 24px;
@@ -1203,3 +1404,4 @@ html {
     font-size: 24px;
   }
 }
+
