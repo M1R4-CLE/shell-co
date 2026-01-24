@@ -594,7 +594,7 @@ export default function Home() {
                 <div className={styles.formGroup}>
                   <textarea name="message" placeholder="Your Message" required></textarea>
                 </div>
-                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" />
+                <input type="hidden" name="_next" value="https://shell-co.vercel.app/#contact" />
                 <button type="submit" className={styles.submitBtn}>
                   Send Message
                   <span className={styles.ctaIcon}>↗</span>
