@@ -78,7 +78,7 @@ const chickenMeatCards = [
     bulkOrder: "Bulk: 10kg+ (special price)"
   },
   {
-    id: 'chicken-fillet', // new id
+    id: 'chicken-fillet', 
     name: "Chicken Fillet",
     image: "/images/Chicken/Fillet1.png",
     description: "Boneless chicken fillet, perfect for quick meals.",
@@ -136,7 +136,7 @@ const allProducts = [
     name: card.name,
     category: "Chicken Meat (Pieces)",
     desc: "",
-    img: "", // Add image paths if available
+    img: "", 
   })),
   // Feeds (add details if you have them)
   { id: 401, name: "Poultry Feed 1", category: "Poultry Feeds", desc: "", img: "" },
@@ -693,8 +693,8 @@ export async function POST(request) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "yourgmail@gmail.com", // replace with your Gmail
-      pass: "your-app-password",   // use an App Password, not your Gmail password
+      user: "yourgmail@gmail.com",
+      pass: "your-app-password",   
     },
   });
 
