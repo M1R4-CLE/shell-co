@@ -78,6 +78,7 @@ const chickenMeatCards = [
     bulkOrder: "Bulk: 10kg+ (special price)"
   },
   {
+    id: 'chicken-fillet', // new id
     name: "Chicken Fillet",
     image: "/images/Chicken/Fillet1.png",
     description: "Boneless chicken fillet, perfect for quick meals.",
@@ -670,6 +671,17 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <div className={styles.ctaRow}>
+        <a href="#products" className={styles.cta}>
+          Explore poultry solutions
+          <span className={styles.ctaIcon}>↗</span>
+        </a>
+        <a href="#contact" className={styles.cta}>
+          Get a free consultation
+          <span className={styles.ctaIcon}>↗</span>
+        </a>
+      </div>
     </div>
   );
 }
