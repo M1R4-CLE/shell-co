@@ -6,27 +6,27 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import 'leaflet/dist/leaflet.css';
 
-const chickenMeatCards = [
+const meatProducts = [
   {
     name: "Chicken Leg",
-    image: "/images/Chicken/Chicken_Leg.png",
-    description: "Fresh chicken legs, perfect for grilling or frying.",
+    image: "/images/Chicken/Chickenleg.png",
+    description: "Juicy chicken leg, perfect for grilling.",
     kilos: "Available: 1kg, 2kg, 5kg",
-    bulkOrder: "Bulk: 10kg+ (special price)"
+    bulk: "Bulk: 10kg+ (special price)"
   },
   {
     name: "Chicken Wing",
-    image: "/images/Chicken/Chicken_wing.png",
-    description: "Juicy chicken wings, ideal for parties and gatherings.",
+    image: "/images/Chicken/Chickenwing.png",
+    description: "Crispy chicken wings, great for snacks.",
     kilos: "Available: 1kg, 2kg, 5kg",
-    bulkOrder: "Bulk: 10kg+ (special price)"
+    bulk: "Bulk: 10kg+ (special price)"
   },
   {
     name: "Chicken Breast",
     image: "/images/Chicken/Chickenbreast.png",
     description: "Lean chicken breast, great for healthy meals.",
     kilos: "Available: 1kg, 2kg, 5kg",
-    bulkOrder: "Bulk: 10kg+ (special price)"
+    bulk: "Bulk: 10kg+ (special price)"
   },
   {
     name: "Chicken Thigh",
@@ -52,7 +52,7 @@ const chickenMeatCards = [
   {
     name: "Chicken Back",
     image: "/images/Chicken/Chickenback1.png",
-    description: "Meaty bone section ideal for soups and stock making. Provides rich flavor when simmered slowly.",
+    description: "Meaty bone section ideal for soups and stocks, adding rich flavor.",
     kilos: "Available: 1kg, 2kg, 5kg",
     bulkOrder: "Bulk: 10kg+ (special price)"
   },
@@ -131,7 +131,7 @@ const allProducts = [
   { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken3kg.png" },
   { id: 203, name: "Whole Chicken (Bulk Orders)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Bulkorder.png" },
   // Chicken Meat Pieces
-  ...chickenMeatCards.map(card => ({
+  ...meatProducts.map(card => ({
     id: 300 + card.id,
     name: card.name,
     category: "Chicken Meat (Pieces)",
@@ -291,10 +291,6 @@ export default function Home() {
   };
 
   // Chicken meat carousel state and handlers
-  const [meatStart, setMeatStart] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState("");
-
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(5);
 
@@ -312,18 +308,10 @@ export default function Home() {
   };
 
   const handleMeatRight = () => {
-    setCarouselIndex((prev) => Math.min(prev + 1, chickenMeatCards.length - visibleCount));
+    setCarouselIndex((prev) => Math.min(prev + 1, meatProducts.length - visibleCount));
   };
 
-  const getVisibleCards = () => {
-    const cards = [];
-    for (let i = 0; i < visibleCount; i++) {
-      cards.push(chickenMeatCards[(meatStart + i) % chickenMeatCards.length]);
-    }
-    return cards;
-  };
-
-  const visibleMeatCards = chickenMeatCards.slice(carouselIndex, carouselIndex + 5);
+  const visibleMeatCards = meatProducts.slice(carouselIndex, carouselIndex + visibleCount);
 
   // Search functionality state
   const [searchQuery, setSearchQuery] = useState("");
@@ -334,7 +322,7 @@ export default function Home() {
   );
 
   // Filtered meat cards based on search query
-  const filteredMeatCards = chickenMeatCards.filter(card =>
+  const filteredMeatCards = meatProducts.filter(card =>
     card.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -355,17 +343,17 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.brand}>
-          <span className={styles.logoMark}>
-            <Image
+        <div className="brand">
+          <span className="logoMark">
+            <img
               src="/images/ShellCo-notext-bg.png"
-              alt="Shell Co logo"
-              width={48}
-              height={55}
-              priority
+              alt="Logo"
+              width={20}
+              height={20}
+              style={{ width: "20px", height: "20px", objectFit: "contain" }}
             />
           </span>
-          <span className={styles.brandText}>Shell Co.</span>
+          <span className="brandText">Shell Co.</span>
         </div>
 
         <nav className={styles.nav} aria-label="Primary">
@@ -391,6 +379,17 @@ export default function Home() {
               chickens to produce quality eggs and meat. It focuses on proper
               care,
             </p>
+            {/* MOVE BUTTONS HERE */}
+            <div className={styles.ctaRow} style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+              <a href="#products" className={styles.cta}>
+                Explore poultry solutions
+                <span className={styles.ctaIcon}>↗</span>
+              </a>
+              <a href="#contact" className={styles.cta}>
+                Get a free consultation
+                <span className={styles.ctaIcon}>↗</span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -671,50 +670,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      <div className={styles.ctaRow}>
-        <a href="#products" className={styles.cta}>
-          Explore poultry solutions
-          <span className={styles.ctaIcon}>↗</span>
-        </a>
-        <a href="#contact" className={styles.cta}>
-          Get a free consultation
-          <span className={styles.ctaIcon}>↗</span>
-        </a>
-      </div>
     </div>
   );
 }
-
-export async function POST(request) {
-  const { name, email, phone, message } = await request.json();
-
-  // Configure your SMTP transporter
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.GMAIL_USER, // your Gmail address
-      pass: process.env.GMAIL_PASS, // your Gmail App Password
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.GMAIL_USER, // your Gmail address
-    to: "monecorporation1@gmail.com", // where you want to receive the message
-    subject: `New Consultation Request from ${name}`,
-    text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Message: ${message}
-    `,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ success: false, error: error.message }), { status: 500 });
-  }
-}
-
