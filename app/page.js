@@ -693,20 +693,20 @@ export async function POST(request) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "yourgmail@gmail.com",
-      pass: "your-app-password",   
+      user: process.env.GMAIL_USER, // your Gmail address
+      pass: process.env.GMAIL_PASS, // your Gmail App Password
     },
   });
 
   const mailOptions = {
-    from: email,
-    to: "monecorporation1@gmail.com",
+    from: process.env.GMAIL_USER, // your Gmail address
+    to: "monecorporation1@gmail.com", // where you want to receive the message
     subject: `New Consultation Request from ${name}`,
     text: `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Message: ${message}
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message: ${message}
     `,
   };
 
