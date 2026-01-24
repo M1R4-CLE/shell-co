@@ -7,20 +7,164 @@ import styles from "./page.module.css";
 import 'leaflet/dist/leaflet.css';
 
 const chickenMeatCards = [
-  { id: 1, name: "Chicken Leg" },
-  { id: 2, name: "Chicken Wing" },
-  { id: 3, name: "Chicken Breast" },
-  { id: 4, name: "Chicken Thigh" },
-  { id: 5, name: "Chicken Drumstick" },
-  { id: 6, name: "Chicken Back" },
-  { id: 7, name: "Chicken Neck" },
-  { id: 8, name: "Chicken Giblets" },
-  { id: 9, name: "Chicken Liver" },
-  { id: 10, name: "Chicken Intestine" },
-  { id: 11, name: "Chicken Feet" },
-  { id: 12, name: "Chicken fillet" },
-  { id: 13, name: "Chicken Leg Thigh" },
-  { id: 14, name: "Chicken Butt" }
+  {
+    name: "Chicken Leg",
+    image: "/images/Chicken/Chicken_Leg.png",
+    description: "Fresh chicken legs, perfect for grilling or frying.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Wing",
+    image: "/images/Chicken/Chicken_wing.png",
+    description: "Juicy chicken wings, ideal for parties and gatherings.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Breast",
+    image: "/images/Chicken/Chickenbreast.png",
+    description: "Lean chicken breast, great for healthy meals.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Thigh",
+    image: "/images/Chicken/Chickenthigh1.png",
+    description: "Tender chicken thighs, full of flavor.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Head",
+    image: "/images/Chicken/Chickenhead1.png",
+    description: "Chicken heads, suitable for soup and special dishes.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Neck",
+    image: "/images/Chicken/Chickenneck1.png",
+    description: "Chicken necks, flavorful and great for soups.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Back",
+    image: "/images/Chicken/Chickenback1.png",
+    description: "Chicken backs, perfect for broths.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Feet",
+    image: "/images/Chicken/Chickenfeet1.png",
+    description: "Chicken feet, ideal for stews.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Liver",
+    image: "/images/Chicken/Chickenliver1.png",
+    description: "Fresh chicken liver, rich in nutrients.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Giblets",
+    image: "/images/Chicken/Giblets1.png",
+    description: "Assorted chicken giblets, great for various dishes.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Fillet",
+    image: "/images/Chicken/Fillet1.png",
+    description: "Boneless chicken fillet, perfect for quick meals.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Thighleg",
+    image: "/images/Chicken/Chickenthighleg1.png",
+    description: "Juicy chicken thighleg, great for grilling.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Intestine",
+    image: "/images/Chicken/Chickenintestine1.png",
+    description: "Fresh chicken intestine, ideal for skewers and street food.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Butt",
+    image: "/images/Chicken/Chickenbutt1.png",
+    description: "Chicken butt, a delicacy for grilling and roasting.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Half Slice Chicken",
+    image: "/images/Chicken/Halfslice1.png",
+    description: "Half slice chicken, convenient for various recipes.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  },
+  {
+    name: "Chicken Skin",
+    image: "/images/Chicken/Chickenskin1.png",
+    description: "Crispy chicken skin, perfect for snacks and toppings.",
+    kilos: "Available: 1kg, 2kg, 5kg",
+    bulkOrder: "Bulk: 10kg+ (special price)"
+  }
+];
+
+const allProducts = [
+  // Eggs
+  { id: 101, name: "White Egg", category: "Egg", desc: "Fresh white eggs from healthy hens. Rich in protein and perfect for daily meals.", img: "/images/Chicken/WhiteEgg_Tray.png" },
+  { id: 102, name: "Brown Egg", category: "Egg", desc: "Nutritious brown eggs, carefully selected for quality and freshness every day.", img: "/images/Chicken/BrownEggTray.png" },
+  // Whole Chickens
+  { id: 201, name: "Whole Chicken (2kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken1.png" },
+  { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken3kg.png" },
+  { id: 203, name: "Whole Chicken (Bulk Orders)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Bulkorder.png" },
+  // Chicken Meat Pieces
+  ...chickenMeatCards.map(card => ({
+    id: 300 + card.id,
+    name: card.name,
+    category: "Chicken Meat (Pieces)",
+    desc: "",
+    img: "", // Add image paths if available
+  })),
+  // Feeds (add details if you have them)
+  { id: 401, name: "Poultry Feed 1", category: "Poultry Feeds", desc: "", img: "" },
+  { id: 402, name: "Poultry Feed 2", category: "Poultry Feeds", desc: "", img: "" },
+  { id: 403, name: "Poultry Feed 3", category: "Poultry Feeds", desc: "", img: "" },
+];
+
+const poultryFeeds = [
+  {
+    name: "Starter Feed",
+    image: "/images/Poultry%20Feed/Starter.png",
+    description: "Formulated for chicks (0-3 weeks), this feed is rich in protein and essential nutrients to support rapid growth and a strong immune system.",
+    weight: "Available: 25kg sack",
+    bestFor: "Best for: Chicks and young poultry"
+  },
+  {
+    name: "Grower Feed",
+    image: "/images/Poultry%20Feed/Grower.png",
+    description: "Balanced nutrition for growing chickens (4-16 weeks). Supports healthy development, feathering, and prepares birds for laying.",
+    weight: "Available: 25kg sack",
+    bestFor: "Best for: Pullets and growers"
+  },
+  {
+    name: "Layer Feed",
+    image: "/images/Poultry%20Feed/Layer.png",
+    description: "Specially designed for laying hens, this feed boosts egg production, enhances shell quality, and supports overall hen health during feeding and peak laying stages.",
+    weight: "Available: 25kg sack",
+    bestFor: "Best for: Laying hens"
+  }
 ];
 
 export default function Home() {
@@ -122,33 +266,26 @@ export default function Home() {
     document.head.appendChild(script);
   };
 
-  const handleFormSubmit = async (e) => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      message: formData.get('message'),
-    };
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        alert('Message sent successfully!');
-        e.target.reset();
-      } else {
-        alert('Error sending message');
-      }
-    } catch (error) {
-      alert('Error: ' + error.message);
+    setStatus("Sending...");
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    if (res.ok) {
+      setStatus("Message sent!");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } else {
+      setStatus("Failed to send. Please try again.");
     }
   };
 
@@ -157,29 +294,24 @@ export default function Home() {
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState("");
 
-  const visibleCount = 5;
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(5);
 
-  const totalMeat = chickenMeatCards.length;
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      setVisibleCount(window.innerWidth < 600 ? 1 : 5);
+    };
+    window.addEventListener('resize', updateVisibleCount);
+    updateVisibleCount();
+    return () => window.removeEventListener('resize', updateVisibleCount);
+  }, []);
 
-  // Animation handler
   const handleMeatLeft = () => {
-    if (animating) return;
-    setDirection("left");
-    setAnimating(true);
-    setTimeout(() => {
-      setMeatStart((prev) => (prev - 1 + chickenMeatCards.length) % chickenMeatCards.length);
-      setAnimating(false);
-    }, 300); // match CSS transition duration
+    setCarouselIndex((prev) => Math.max(prev - 1, 0));
   };
 
   const handleMeatRight = () => {
-    if (animating) return;
-    setDirection("right");
-    setAnimating(true);
-    setTimeout(() => {
-      setMeatStart((prev) => (prev + 1) % chickenMeatCards.length);
-      setAnimating(false);
-    }, 300);
+    setCarouselIndex((prev) => Math.min(prev + 1, chickenMeatCards.length - visibleCount));
   };
 
   const getVisibleCards = () => {
@@ -190,7 +322,34 @@ export default function Home() {
     return cards;
   };
 
-  const visibleMeatCards = getVisibleCards();
+  const visibleMeatCards = chickenMeatCards.slice(carouselIndex, carouselIndex + 5);
+
+  // Search functionality state
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filtered products based on search query
+  const filteredProducts = allProducts.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Filtered meat cards based on search query
+  const filteredMeatCards = chickenMeatCards.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div className={styles.page}>
@@ -209,7 +368,7 @@ export default function Home() {
         </div>
 
         <nav className={styles.nav} aria-label="Primary">
-          <a className={styles.navLink} href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>Home</a>
+          <a className={`${styles.navLink} ${styles.homeBtn}`} href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>Home</a>
           <a className={styles.navLink} href="#about">About Us</a>
           <a className={styles.navLink} href="#services">Services</a>
           <a className={styles.navLink} href="#products">Products</a>
@@ -288,6 +447,8 @@ export default function Home() {
               className={styles.productsSearch}
               type="text"
               placeholder="Search Product"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
 
@@ -367,31 +528,51 @@ export default function Home() {
           {/* Chicken Meat (Pieces) Carousel */}
           <div className={styles.chickenMeatCategory}>
             <div className={styles.categoryTitle}>Chicken Meat (Pieces)</div>
-            <div className={styles.carouselRow}>
-              <button className={styles.carouselArrow} onClick={handleMeatLeft}>&lt;</button>
+            <div className={styles.carouselRow} style={{ position: "relative", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <button
+                className={styles.carouselBtn}
+                onClick={handleMeatLeft}
+                aria-label="Previous"
+              >
+                &lt;
+              </button>
               <div className={styles.carouselCards}>
-                {visibleMeatCards.map((card) => (
-                  <div className={styles.meatProductCard} key={card.id}>
-                    <h3 className={styles.cardTitle}>{card.name}</h3>
+                {visibleMeatCards.map((item, idx) => (
+                  <div className={styles.meatProductCard} key={item.name + idx}>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      style={{ width: "120px", height: "120px", objectFit: "contain", marginBottom: "16px" }}
+                    />
+                    <div className={styles.cardTitle}>{item.name}</div>
+                    <div style={{ color: "#fff", fontSize: "0.98rem", margin: "8px 0" }}>{item.description}</div>
+                    <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Kilos:</b> {item.kilos}</div>
+                    <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Bulk Order:</b> {item.bulkOrder}</div>
                   </div>
                 ))}
               </div>
-              <button className={styles.carouselArrow} onClick={handleMeatRight}>&gt;</button>
+              <button
+                className={styles.carouselBtn}
+                onClick={handleMeatRight}
+                aria-label="Next"
+              >
+                &gt;
+              </button>
             </div>
           </div>
 
           <div className={styles.poultryFeedsCategory}>
             <div className={styles.categoryTitle}>Poulty Feeds</div>
             <div className={styles.poultryFeedsCardsRow}>
-              <div className={styles.productCard}>
-                {/* Card 1 content */}
-              </div>
-              <div className={styles.productCard}>
-                {/* Card 2 content */}
-              </div>
-              <div className={styles.productCard}>
-                {/* Card 3 content */}
-              </div>
+              {poultryFeeds.map((feed, idx) => (
+                <div className={styles.poultryFeedCard} key={feed.name + idx}>
+                  <img src={feed.image} alt={feed.name} className={styles.poultryFeedImage} />
+                  <div className={styles.poultryFeedTitle}>{feed.name}</div>
+                  <div className={styles.poultryFeedDesc}>{feed.description}</div>
+                  <div className={styles.poultryFeedWeight}>{feed.weight}</div>
+                  <div className={styles.poultryFeedBestFor}>{feed.bestFor}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -424,7 +605,11 @@ export default function Home() {
             </div>
             <div className={styles.contactFormWrapper}>
               <h3 className={styles.consultationTitle}>Get a free consultation</h3>
-              <form className={styles.contactForm} onSubmit={handleFormSubmit}>
+              <form
+                action="https://formsubmit.co/monecorporation1@gmail.com"
+                method="POST"
+                className={styles.contactForm}
+              >
                 <div className={styles.formGroup}>
                   <input type="text" name="name" placeholder="Your Name" required />
                 </div>
@@ -432,11 +617,12 @@ export default function Home() {
                   <input type="email" name="email" placeholder="Your Email" required />
                 </div>
                 <div className={styles.formGroup}>
-                  <input type="tel" name="phone" placeholder="Your Phone Number" required />
+                  <input type="text" name="phone" placeholder="Your Phone Number" required />
                 </div>
                 <div className={styles.formGroup}>
-                  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                  <textarea name="message" placeholder="Your Message" required></textarea>
                 </div>
+                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" />
                 <button type="submit" className={styles.submitBtn}>
                   Send Message
                   <span className={styles.ctaIcon}>↗</span>
@@ -463,6 +649,27 @@ export default function Home() {
       <footer className={styles.footer}>
         <p>Copyright 2026 | Web Programming (Lab) M1 Summative Part3 | IT103L.A223.2T.25.26 | Masapa Daryll Dave R.</p>
       </footer>
+
+      {/* Modal for product details */}
+      {isModalOpen && selectedProduct && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeBtn} onClick={closeModal}>&times;</button>
+            <div className={styles.modalBody}>
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                className={styles.carouselImage}
+              />
+              <div className={styles.modalText}>
+                <div className={styles.modalTitle}>{selectedProduct.name}</div>
+                <div className={styles.modalDescription}>{selectedProduct.description}</div>
+                {/* Add more details if needed */}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -470,32 +677,32 @@ export default function Home() {
 export async function POST(request) {
   const { name, email, phone, message } = await request.json();
 
+  // Configure your SMTP transporter
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: "yourgmail@gmail.com", // replace with your Gmail
+      pass: "your-app-password",   // use an App Password, not your Gmail password
     },
   });
 
-  try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: 'monecorporation1@gmail.com', // Changed to your email
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Message from Shell Co. Website</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+  const mailOptions = {
+    from: email,
+    to: "monecorporation1@gmail.com",
+    subject: `New Consultation Request from ${name}`,
+    text: `
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Message: ${message}
+    `,
+  };
 
-    return Response.json({ success: true, message: 'Email sent!' });
+  try {
+    await transporter.sendMail(mailOptions);
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error('Email error:', error);
-    return Response.json({ success: false, error: error.message }, { status: 500 });
+    return new Response(JSON.stringify({ success: false, error: error.message }), { status: 500 });
   }
 }
+

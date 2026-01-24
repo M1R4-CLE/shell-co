@@ -387,12 +387,67 @@ html {
   background-image: url("/images/BG2.png");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 700px;
   display: flex;
   align-items: flex-start;      /* Align content to the top */
   padding: 20px 22px 80px 22px; /* Top padding reduced to 20px */
   width: 100%;
   margin-top: 0px;
+}
+
+.productsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 24px;
+  margin-top: 32px; /* Add this or increase if needed */
+}
+
+.productsTitle {
+  color: #0b0b0b;
+  font-size: 56px;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 40px;
+  font-family: 'Archivo Black';
+}
+
+.productsSearch {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  display: block;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid #222;
+  box-sizing: border-box;
+  background: #e0e0e0; /* Light gray background */
+  color: #111;         /* Black text when typing */
+}
+
+/* Placeholder text gray */
+.productsSearch::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .productsTitle {
+    font-size: 1.5rem;
+    padding: 0 8px;
+    font-family: 'Archivo Black';
+  }
+  .productsSearch {
+    max-width: 95vw;
+    font-size: 0.95rem;
+    padding: 8px 8px;
+  }
 }
 
 .productsContainer {
@@ -407,38 +462,6 @@ html {
   margin-left: 200px;/* No extra top padding */
 }
 
-.productsHeader {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-left: 80px;
-  margin-top: 100px; /* Increase this value to move them further down */
-  margin-bottom: 0;
-  margin-left: 300px;
-}
-
-.productsTitle {
-  font-size: 48px;
-  font-weight: 900;
-  margin: 0 24px 0 0;
-  color: #0b0b0b;
-  font-family: 'Archivo Black', sans-serif;
-}
-
-.productsSearch {
-  font-size: 18px;
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: 2px solid #222;
-  outline: none;
-  background: #fffbe9;
-  color: #0b0b0b;
-  font-family: inherit;
-  width: 600px;
-  max-width: 100%;
-  margin-left: 300px;
-}
-
 .eggCategory {
   width: 100%;
   display: flex;
@@ -448,13 +471,12 @@ html {
 }
 
 .categoryTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 8px;
-  margin-top: 16px;
+  font-size: 30px; /* Match .aboutTitle */
+  font-weight: 900;
+  margin: 0 0 40px;
+  color: #0b0b0b;
   font-family: 'Archivo Black', sans-serif;
-  color: #000; /* Make the text black */
+  text-align: center;
 }
 
 .eggCardsRow {
@@ -482,7 +504,7 @@ html {
 
 .meatProductCard {
   width: 220px;
-  height: 370px;
+  height: 390px;
   background: rgba(180, 160, 120, 0.85);
   border-radius: 32px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -492,19 +514,24 @@ html {
   justify-content: flex-start;
   padding: 24px 16px;
   box-sizing: border-box;
+  margin-bottom: 16px;
+  transition: width 0.2s, height 0.2s;
+}
+
+.meatProductCard:hover,
+.poultryFeedCard:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 32px rgba(180,160,120,0.18);
+  z-index: 3;
+  border-radius: 32px;
 }
 
 .cardTitle {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   text-align: center;
-}
-
-.cardDesc {
-  font-size: 1rem;
-  text-align: center;
-  color: #222;
+  color: #fff;
 }
 
 /* Modal Styles */
@@ -562,23 +589,27 @@ html {
 }
 
 .carouselBtn {
-  background: rgba(180, 160, 120, 0.85);
+  background: #b4a078; /* More color, adjust as needed */
   border: none;
-  border-radius: 10px;
-  width: 70px;
-  height: 70px;
-  font-size: 40px;
-  cursor: pointer;
-  color: #0b0b0b;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  color: #222; /* Dark arrow for contrast */
   font-weight: bold;
-  flex-shrink: 0;  /* ← prevents button from shrinking */
-  align-self: center;  /* ← keeps button centered vertically */
-  transition: all 0.3s ease;  /* ← add this */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, transform 0.2s;
+  margin: 0 8px; /* gap between button and card */
 }
 
 .carouselBtn:hover {
-  background: rgba(180, 160, 120, 1);
-  transform: scale(1.15);  /* ← zoom 15% bigger */
+  background: #a08c6a; /* Slightly darker on hover */
+  transform: scale(1.08);
 }
 
 .carouselImage {
@@ -895,48 +926,42 @@ html {
 
 .carouselRow {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: row;   /* Ensure horizontal layout */
-  gap: 16px;             /* Space between cards and arrows */
-  margin-top: 8px;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .carouselCards {
   display: flex;
-  flex-direction: row;   /* Horizontal cards */
-  gap: 32px;             /* Space between cards */
-}
-
-.carouselArrow {
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #111;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  padding: 0 12px;
-  transition: color 0.2s;
-}
-.carouselArrow:hover {
-  color: #b4a078;
-}
-
-.poultryFeedsCategory {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.poultryFeedsCardsRow {
-  display: flex;
-  gap: 32px;
+  gap: 16px;
   justify-content: center;
-  margin-top: 8px;
+  width: auto;
+  min-height: 420px;    /* Increase height as needed */
+  padding: 12px 12px;   /* Add a little horizontal padding */
+  overflow: visible;    /* Allow zoomed cards to show fully */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carouselCards::-webkit-scrollbar {
+  display: none;
+}
+
+.meatProductCard {
+  min-width: 180px; /* or your preferred width */
+  flex: 0 0 auto;
+  /* existing styles... */
+}
+
+/* Optional: Hide arrows on small screens */
+@media (max-width: 600px) {
+  .carouselArrow {
+    display: none;
+  }
+  .carouselRow {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -964,6 +989,61 @@ html {
 
   .contactContainer {
     gap: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 12px 10px;
+    gap: 10px;
+  }
+  .brand {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+  .brandText {
+    font-size: 28px;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navLink {
+    width: auto;
+    min-width: 90px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 6px 8px;
+    gap: 8px;
+  }
+  .brandText {
+    font-size: 20px;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .navLink {
+    min-width: 80px;
+    font-size: 12px;
+    padding: 0 8px;
+    height: 30px;
   }
 }
 
@@ -1220,16 +1300,12 @@ html {
     display: flex;
     flex-direction: row;
     gap: 12px;
-    overflow-x: auto;
+    overflow-x: auto !important;
     overflow-y: hidden;
     padding-bottom: 8px;
-    /* Show scrollbar on mobile */
-    /* Firefox */
     scrollbar-width: thin;
-    /* IE and Edge */
     -ms-overflow-style: auto;
   }
-  /* Chrome, Safari, Opera */
   .carouselCards::-webkit-scrollbar {
     height: 6px;
     background: #e0cfa3;
@@ -1237,6 +1313,15 @@ html {
   .carouselCards::-webkit-scrollbar-thumb {
     background: #b4a078;
     border-radius: 3px;
+  }
+
+  .productsTitle {
+    font-size: 1.5rem;
+    padding: 0 8px;
+  }
+  .productsHeader {
+    gap: 8px;
+    margin-bottom: 12px;
   }
 }
 
@@ -1403,5 +1488,92 @@ html {
     height: 50px;
     font-size: 24px;
   }
+}
+
+
+/* Make sure only .productsSection has the background you want */
+.productsSection {
+  background: url('/images/BG2.png') center center/cover no-repeat;
+  /* or your preferred background */
+}
+
+.productsSection {
+  padding-top: 48px; /* Add this or increase if needed */
+}
+
+.poultryFeedsCardsRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
+.poultryFeedCard {
+  width: 320px;         /* Set a fixed width */
+  min-height: 320px;    /* Set a fixed minimum height */
+  background: linear-gradient(135deg, #ffe177 60%, #b4a078 100%);
+  border-radius: 28px;
+  box-shadow: 0 4px 16px rgba(180,160,120,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 18px 22px 18px;
+  margin-bottom: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #e0cfa3;
+  box-sizing: border-box;
+}
+.poultryFeedCard:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px rgba(223, 211, 145, 0.733);
+}
+.poultryFeedImage {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+.poultryFeedTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #a08c6a;
+  margin-bottom: 8px;
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+}
+.poultryFeedDesc {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 12px;
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+}
+.poultryFeedWeight, .poultryFeedBestFor {
+  font-size: 0.98rem;
+  color: #6b5b36;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+/* For Whole Chicken and Egg cards */
+.productCard:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 32px rgba(180,160,120,0.18);
+  z-index: 3;
+  border-radius: 32px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* For Home button (assuming .navLink or .homeBtn) */
+.navLink:hover,
+.homeBtn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 4px 16px rgba(180,160,120,0.18);
+  z-index: 3;
+  border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
