@@ -313,17 +313,25 @@ export default function Home() {
 
   const visibleMeatCards = meatProducts.slice(carouselIndex, carouselIndex + visibleCount);
 
-  // Search functionality state
+  // --- Search State ---
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Filtered products based on search query
-  const filteredProducts = allProducts.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // --- Filter Logic ---
+  const filteredEggs = allProducts.filter(
+    product =>
+      product.category === "Egg" &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Filtered meat cards based on search query
-  const filteredMeatCards = meatProducts.filter(card =>
-    card.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredWholeChicken = allProducts.filter(
+    product =>
+      product.category === "Whole Chicken" &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredMeatProducts = meatProducts.filter(
+    product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // Modal state
@@ -343,17 +351,15 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className="brand">
-          <span className="logoMark">
-            <img
-              src="/images/ShellCo-notext-bg.png"
-              alt="Logo"
-              width={20}
-              height={20}
-              style={{ width: "20px", height: "20px", objectFit: "contain" }}
-            />
-          </span>
-          <span className="brandText">Shell Co.</span>
+        <div className={styles.brand}>
+          <img
+            src="/images/ShellCo-notext-bg.png"
+            alt="Shell Co. Logo"
+            className={styles.logoMark}
+            width={48}
+            height={48}
+          />
+          <span className={styles.brandText}>Shell Co.</span>
         </div>
 
         <nav className={styles.nav} aria-label="Primary">
@@ -452,83 +458,49 @@ export default function Home() {
             />
           </div>
 
+          {/* Eggs */}
           <div className={styles.eggCategory}>
             <div className={styles.categoryTitle}>Egg</div>
             <div className={styles.eggCardsRow}>
-              <div className={styles.productCard}>
-                <img
-                  src="/images/Chicken/WhiteEgg_Tray.png"
-                  alt="White Egg"
-                  className={styles.cardImage}
-                />
-                <h3 className={styles.cardTitle}>White Egg</h3>
-                <p className={styles.cardDesc}>
-                  Fresh white eggs from healthy hens. Rich in protein and perfect for daily meals.
-                </p>
-              </div>
-              <div className={styles.productCard}>
-                <img
-                  src="/images/Chicken/BrownEggTray.png"
-                  alt="Brown Egg"
-                  className={styles.cardImage}
-                />
-                <h3 className={styles.cardTitle}>Brown Egg</h3>
-                <p className={styles.cardDesc}>
-                  Nutritious brown eggs, carefully selected for quality and freshness every day.
-                </p>
-              </div>
+              {(searchQuery ? filteredEggs : allProducts.filter(p => p.category === "Egg")).map((product, idx) => (
+                <div className={styles.productCard} key={product.name + idx}>
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className={styles.cardImage}
+                  />
+                  <h3 className={styles.cardTitle}>{product.name}</h3>
+                  <p className={styles.cardDesc}>{product.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
 
+          {/* Whole Chicken */}
           <div className={styles.wholeChickenCategory}>
             <div className={styles.categoryTitle}>Whole Chicken</div>
             <div className={styles.wholeChickenCardsRow}>
-              {/* Whole Chicken (2kg) */}
-              <div className={styles.productCard}>
-                <img
-                  src="/images/Chicken/Whole_Chicken1.png"
-                  alt="Whole Chicken 2kg"
-                  className={styles.cardImage}
-                />
-                <h3 className={styles.cardTitle}>Whole Chicken (2kg)</h3>
-                <div className={styles.cardType}>Fresh • Poultry</div>
-                <div className={styles.cardSizes}>
-                  Sizes: 1 head, 2 heads, 5 heads, 10 heads
+              {(searchQuery ? filteredWholeChicken : allProducts.filter(p => p.category === "Whole Chicken")).map((product, idx) => (
+                <div className={styles.productCard} key={product.name + idx}>
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className={styles.cardImage}
+                  />
+                  <h3 className={styles.cardTitle}>{product.name}</h3>
+                  <div className={styles.cardType}>Fresh • Poultry</div>
+                  <div className={styles.cardSizes}>
+                    {/* You can add sizes info here if available */}
+                  </div>
                 </div>
-              </div>
-              {/* Whole Chicken (3kg) */}
-              <div className={styles.productCard + ' ' + styles.raiseCard}>
-                <img
-                  src="/images/Chicken/Whole_Chicken3kg.png"
-                  alt="Whole Chicken 3kg"
-                  className={styles.cardImage + ' ' + styles.imgMargin3kg}
-                />
-                <h3 className={styles.cardTitle}>Whole Chicken (3kg)</h3>
-                <div className={styles.cardType}>Fresh • Poultry</div>
-                <div className={styles.cardSizes}>
-                  Sizes: 1 head, 2 heads, 5 heads, 10 heads
-                </div>
-              </div>
-              {/* Whole Chicken (Bulk Orders) */}
-              <div className={styles.productCard}>
-                <img
-                  src="/images/Chicken/Bulkorder.png"
-                  alt="Whole Chicken Bulk Orders"
-                  className={styles.cardImage + ' ' + styles.imgMarginBulk}
-                />
-                <h3 className={styles.cardTitle + ' ' + styles.bulkTitle}>Whole Chicken (Bulk Orders)</h3>
-                <div className={styles.cardType + ' ' + styles.bulkType}>Fresh • Poultry</div>
-                <div className={styles.cardSizes + ' ' + styles.bulkSizes}>
-                  Sizes: 25 heads, 50 heads, 100 heads, Custom
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Chicken Meat (Pieces) Carousel */}
           <div className={styles.chickenMeatCategory}>
             <div className={styles.categoryTitle}>Chicken Meat (Pieces)</div>
-            <div className={styles.carouselRow} style={{ position: "relative", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className={styles.carouselRow} style={{ position: "relative", width: "100%", display: "flex", alignItems: "center" }}>
               <button
                 className={styles.carouselBtn}
                 onClick={handleMeatLeft}
