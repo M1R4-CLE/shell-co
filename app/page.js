@@ -52,7 +52,7 @@ const chickenMeatCards = [
   {
     name: "Chicken Back",
     image: "/images/Chicken/Chickenback1.png",
-    description: "Meaty bone section ideal for soups and stocks, adding rich flavor.",
+    description: "Meaty bone section ideal for soups and stock making. Provides rich flavor when simmered slowly.",
     kilos: "Available: 1kg, 2kg, 5kg",
     bulkOrder: "Bulk: 10kg+ (special price)"
   },
