@@ -128,7 +128,7 @@ const allProducts = [
   { id: 102, name: "Brown Egg", category: "Egg", desc: "Nutritious brown eggs, carefully selected for quality and freshness every day.", img: "/images/Chicken/BrownEggTray.png" },
   // Whole Chickens
   { id: 201, name: "Whole Chicken (2kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken1.png" },
-  { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken3kg.png" },
+  { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken2.png" },
   { id: 203, name: "Whole Chicken (Bulk Orders)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Bulkorder.png" },
   // Chicken Meat Pieces
   ...meatProducts.map(card => ({
@@ -276,17 +276,25 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+    const data = {
+      name,
+      email,
+      phone,
+      message
+    };
+
+    const response = await fetch('http://localhost:3001/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
-    if (res.ok) {
-      setStatus("Message sent!");
-      setForm({ name: "", email: "", phone: "", message: "" });
+
+    if (response.ok) {
+      alert('Message sent!');
+      // On success, redirect to your homepage or thank you page
+      window.location.href = '/'; // or '/thank-you'
     } else {
-      setStatus("Failed to send. Please try again.");
+      alert('Failed to send message.');
     }
   };
 
@@ -500,16 +508,9 @@ export default function Home() {
           {/* Chicken Meat (Pieces) Carousel */}
           <div className={styles.chickenMeatCategory}>
             <div className={styles.categoryTitle}>Chicken Meat (Pieces)</div>
-            <div className={styles.carouselRow} style={{ position: "relative", width: "100%", display: "flex", alignItems: "center" }}>
-              <button
-                className={styles.carouselBtn}
-                onClick={handleMeatLeft}
-                aria-label="Previous"
-              >
-                &lt;
-              </button>
-              <div className={styles.carouselCards}>
-                {visibleMeatCards.map((item, idx) => (
+            <div className={styles.meatGridWrapper}>
+              <div className={styles.meatGrid}>
+                {(searchQuery ? filteredMeatProducts : meatProducts).map((item, idx) => (
                   <div className={styles.meatProductCard} key={item.name + idx}>
                     <img
                       src={item.image}
@@ -523,13 +524,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <button
-                className={styles.carouselBtn}
-                onClick={handleMeatRight}
-                aria-label="Next"
-              >
-                &gt;
-              </button>
             </div>
           </div>
 
@@ -594,7 +588,7 @@ export default function Home() {
                 <div className={styles.formGroup}>
                   <textarea name="message" placeholder="Your Message" required></textarea>
                 </div>
-                <input type="hidden" name="_next" value="https://shell-co.vercel.app/#contact" />
+                <input type="hidden" name="_next" value="https://shell-co.vercel.app/" />
                 <button type="submit" className={styles.submitBtn}>
                   Send Message
                   <span className={styles.ctaIcon}>↗</span>

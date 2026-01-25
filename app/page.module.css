@@ -1075,7 +1075,8 @@ html, body {
 
 .meatProductCard {
   min-width: 220px;
-  flex: 0 0 auto;
+  max-width: 260px;
+  width: 100%;
 }
 
 /* Optional: Hide arrows on small screens */
@@ -1910,4 +1911,13 @@ html, body {
   .contactFormWrapper {
     margin-top: 18px !important;
   }
+}
+
+.meatGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 32px 24px; /* row gap, column gap */
+  justify-items: center;
+  margin: 32px auto; /* centers the grid horizontally */
+  width: fit-content; /* grid is only as wide as its content */
 }
