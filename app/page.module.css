@@ -474,14 +474,15 @@ html, body {
 
 .productCard {
   width: 220px;
-  height: 370px;
+  height: 400px; /* or your preferred height */
   background: rgba(180, 160, 120, 0.85);
   border-radius: 32px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      /* Center all child elements horizontally */
   justify-content: flex-start;
+  text-align: center;       /* Center all text inside the card */
   padding: 24px 16px;
   box-sizing: border-box;
   margin-bottom: 16px;
@@ -496,8 +497,9 @@ html, body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      /* Center all child elements horizontally */
   justify-content: flex-start;
+  text-align: center;       /* Center all text inside the card */
   padding: 24px 16px;
   box-sizing: border-box;
   margin-bottom: 16px;
@@ -991,6 +993,8 @@ html, body {
     margin-bottom: 4px;
     font-size: 14px;
     padding: 0 12px;
+    height: 34px;
+    border-radius: 999px;
   }
   .serviceCard:last-child {
     max-width: 100% !important;
@@ -1452,4 +1456,15 @@ html, body {
     padding: 10px 4px;
     height: auto;
   }
+}
+
+/* Make only the images in Whole Chicken cards smaller */
+.wholeChickenCardImage {
+  width: 110px !important;
+  height: 110px !important;
+  object-fit: contain;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

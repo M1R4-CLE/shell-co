@@ -127,9 +127,9 @@ const allProducts = [
   { id: 101, name: "White Egg", category: "Egg", desc: "Fresh white eggs from healthy hens. Rich in protein and perfect for daily meals.", img: "/images/Chicken/WhiteEgg_Tray.png" },
   { id: 102, name: "Brown Egg", category: "Egg", desc: "Nutritious brown eggs, carefully selected for quality and freshness every day.", img: "/images/Chicken/BrownEggTray.png" },
   // Whole Chickens
-  { id: 201, name: "Whole Chicken (2kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken1.png" },
-  { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Whole_Chicken2.png" },
-  { id: 203, name: "Whole Chicken (Bulk Orders)", category: "Whole Chicken", desc: "Fresh • Poultry", img: "/images/Chicken/Bulkorder.png" },
+  { id: 201, name: "Whole Chicken (2kg)", category: "Whole Chicken", desc: "Fresh, whole chicken weighing approximately 2kg. Perfect for roasting, grilling, or making hearty soups. Raised with care for quality and flavor.", img: "/images/Chicken/Whole_Chicken1.png" },
+  { id: 202, name: "Whole Chicken (3kg)", category: "Whole Chicken", desc: "Larger whole chicken, around 3kg. Ideal for family meals, gatherings, or special recipes that require more meat. Always fresh and tender.", img: "/images/Chicken/Whole_Chicken2.png" },
+  { id: 203, name: "Whole Chicken (Bulk Orders)", category: "Whole Chicken", desc: "Order whole chickens in bulk for events, businesses, or reselling. Enjoy special pricing and consistent quality with every order.", img: "/images/Chicken/Bulkorder.png" },
   // Chicken Meat Pieces
   ...meatProducts.map(card => ({
     id: 300 + card.id,
@@ -342,6 +342,10 @@ export default function Home() {
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const hasEggs = filteredEggs.length > 0;
+  const hasWholeChicken = filteredWholeChicken.length > 0;
+  const hasMeatProducts = filteredMeatProducts.length > 0;
+
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -467,65 +471,69 @@ export default function Home() {
           </div>
 
           {/* Eggs */}
-          <div className={styles.eggCategory}>
-            <div className={styles.categoryTitle}>Egg</div>
-            <div className={styles.eggCardsRow}>
-              {(searchQuery ? filteredEggs : allProducts.filter(p => p.category === "Egg")).map((product, idx) => (
-                <div className={styles.productCard} key={product.name + idx}>
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className={styles.cardImage}
-                  />
-                  <h3 className={styles.cardTitle}>{product.name}</h3>
-                  <p className={styles.cardDesc}>{product.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Whole Chicken */}
-          <div className={styles.wholeChickenCategory}>
-            <div className={styles.categoryTitle}>Whole Chicken</div>
-            <div className={styles.wholeChickenCardsRow}>
-              {(searchQuery ? filteredWholeChicken : allProducts.filter(p => p.category === "Whole Chicken")).map((product, idx) => (
-                <div className={styles.productCard} key={product.name + idx}>
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className={styles.cardImage}
-                  />
-                  <h3 className={styles.cardTitle}>{product.name}</h3>
-                  <div className={styles.cardType}>Fresh • Poultry</div>
-                  <div className={styles.cardSizes}>
-                    {/* You can add sizes info here if available */}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Chicken Meat (Pieces) Carousel */}
-          <div className={styles.chickenMeatCategory}>
-            <div className={styles.categoryTitle}>Chicken Meat (Pieces)</div>
-            <div className={styles.meatGridWrapper}>
-              <div className={styles.meatGrid}>
-                {(searchQuery ? filteredMeatProducts : meatProducts).map((item, idx) => (
-                  <div className={styles.meatProductCard} key={item.name + idx}>
+          {(!searchQuery || hasEggs) && (
+            <div className={styles.eggCategory}>
+              <div className={styles.categoryTitle}>Egg</div>
+              <div className={styles.eggCardsRow}>
+                {(searchQuery ? filteredEggs : allProducts.filter(p => p.category === "Egg")).map((product, idx) => (
+                  <div className={styles.productCard} key={product.name + idx}>
                     <img
-                      src={item.image}
-                      alt={item.name}
-                      style={{ width: "120px", height: "120px", objectFit: "contain", marginBottom: "16px" }}
+                      src={product.img}
+                      alt={product.name}
+                      className={`${styles.cardImage} ${styles.wholeChickenCardImage}`}
                     />
-                    <div className={styles.cardTitle}>{item.name}</div>
-                    <div style={{ color: "#fff", fontSize: "0.98rem", margin: "8px 0" }}>{item.description}</div>
-                    <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Kilos:</b> {item.kilos}</div>
-                    <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Bulk Order:</b> {item.bulkOrder}</div>
+                    <h3 className={styles.cardTitle}>{product.name}</h3>
+                    <p className={styles.cardDesc}>{product.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          )}
+
+          {/* Whole Chicken */}
+          {(!searchQuery || hasWholeChicken) && (
+            <div className={styles.wholeChickenCategory}>
+              <div className={styles.categoryTitle}>Whole Chicken</div>
+              <div className={styles.wholeChickenCardsRow}>
+                {(searchQuery ? filteredWholeChicken : allProducts.filter(p => p.category === "Whole Chicken")).map((product, idx) => (
+                  <div className={styles.productCard} key={product.name + idx}>
+                    <img
+                      src={product.img}
+                      alt={product.name}
+                      className={`${styles.cardImage} ${styles.wholeChickenCardImage}`}
+                    />
+                    <h3 className={styles.cardTitle}>{product.name}</h3>
+                    <div className={styles.cardType}>Fresh • Poultry</div>
+                    <div className={styles.cardDesc}>{product.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Chicken Meat (Pieces) */}
+          {(!searchQuery || hasMeatProducts) && (
+            <div className={styles.chickenMeatCategory}>
+              <div className={styles.categoryTitle}>Chicken Meat (Pieces)</div>
+              <div className={styles.meatGridWrapper}>
+                <div className={styles.meatGrid}>
+                  {(searchQuery ? filteredMeatProducts : meatProducts).map((item, idx) => (
+                    <div className={styles.meatProductCard} key={item.name + idx}>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        style={{ width: "120px", height: "120px", objectFit: "contain", marginBottom: "16px" }}
+                      />
+                      <div className={styles.cardTitle}>{item.name}</div>
+                      <div style={{ color: "#fff", fontSize: "0.98rem", margin: "8px 0" }}>{item.description}</div>
+                      <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Kilos:</b> {item.kilos}</div>
+                      <div style={{ color: "#fff", fontSize: "0.95rem" }}><b>Bulk Order:</b> {item.bulkOrder}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className={styles.poultryFeedsCategory}>
             <div className={styles.categoryTitle}>Poulty Feeds</div>
