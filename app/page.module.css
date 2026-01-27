@@ -32,7 +32,6 @@ html, body {
   justify-content: space-between;
   padding: 32px 48px 0 48px;
   box-shadow: none; 
-  visibility: none;
 }
 
 .brand {
@@ -147,140 +146,7 @@ html, body {
   max-width: 700px;
   color: #0b0b0b;
   font-family: 'Crimson Text', serif;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
-  font-family: 'Archivo Black', sans-serif;
-}
-
-.subtitle {
-  margin: 0 0 26px;
-  font-size: 1.5rem;
-  line-height: 1.7;
-  max-width: 700px;
-  color: #0b0b0b;
-  font-family: 'Crimson Text', serif;
   margin-bottom: 32px;
-}
-
-.ctaRow,
-.buttonGroup {
-  display: flex;
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.cta,
-.customBtn {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 248, 220, 0.6); /* 60% transparent */
-  border: 2px solid #222;
-  border-radius: 2rem;
-  padding: 0.7rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  color: #222;
-  transition: background 0.2s, box-shadow 0.2s;
-  position: relative;
-}
-
-.cta:hover {
-  background: rgba(255, 248, 220, 0.85);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transform: scale(1.07); /* This makes it "pop up" */
-}
-
-.ctaIcon {
-  margin-left: 0.7rem;
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid #222;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.ctaIcon,
-.icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  border: 2px solid rgba(0, 0, 0, 0.55);
-  background: rgba(255, 255, 255, 0.85);
-  font-size: 1.1em;
-  line-height: 1;
-  margin-left: 0.5rem;
-}
-
-.main {
-  padding: 0 22px 26px;
-}
-
-.hero {
-  max-width: 1800px;
-  margin: 0 auto;
-  width: 100%;
-
-  height: min(900px, 85vh); 
-  border-radius: 36px;
-  overflow: hidden;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("/images/Main-image.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  transform: scaleX(-1); 
-  z-index: 0;
-  opacity: 0.8;  
-}
-
-.heroInner {
-  max-width: 1000px; 
-  padding: 92px 70px; 
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.title {
-  margin: 0 0 18px;
-  font-size: 48px;          
-  font-weight: 850;          
-  line-height: 1.12;
-  letter-spacing: -0.4px;
-  color: #0b0b0b;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
-
-  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-  font-family: 'Archivo Black', sans-serif;
-}
-
-.subtitle {
-  margin: 0 0 26px;
-  font-size: 1.5rem;   
-  line-height: 1.7;
-  max-width: 700px;
-  color: #0b0b0b;
-  font-family: 'Crimson Text', serif;
-  margin-bottom: 32px; 
 }
 
 .ctaRow {
@@ -312,22 +178,24 @@ html, body {
 }
 
 .ctaIcon {
-  margin-left: 0.7rem;
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid #222;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2em;
-  font-weight: bold;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 1.1em;
+  line-height: 1;
+  margin-left: 0.5rem;
+}
+
+.main {
+  padding: 0 22px 26px;
 }
 
 .heroImage {
   opacity: 0.9;
-  
 }
 
 /* About Us Section */
@@ -446,7 +314,7 @@ html, body {
   grid-template-columns: repeat(2, 1fr);  
   gap: 30px;
   justify-items: center;
-  margin-top: -60;               
+  margin-top: -60px; /* Fixed unit */
 }
 
 .serviceCard {
@@ -634,6 +502,9 @@ html, body {
   box-sizing: border-box;
   margin-bottom: 16px;
   transition: width 0.2s, height 0.2s;
+  min-width: 220px;
+  max-width: 260px;
+  width: 100%;
 }
 
 .meatProductCard:hover,
@@ -695,47 +566,17 @@ html, body {
   align-items: center;
 }
 
-.carouselContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex: 1;
-  position: relative;
-  min-height: 400px;
-  margin-left: 80px;  
-}
-
-.carouselBtn {
-  background: #b4a078; 
-  border: none;
-  border-radius: 12px;
-  width: 44px;
-  height: 44px;
-  font-size: 2rem;
-  color: #222; 
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 2;
-  transition: background 0.2s, transform 0.2s;
-  margin: 0 8px; 
-}
-
-.carouselBtn:hover {
-  background: #a08c6a; 
-  transform: scale(1.08);
-}
-
 .carouselImage {
   width: 500px;
   height: 400px;
   border-radius: 15px;
   object-fit: contain;  
   animation: slideInRight 0.5s ease-in-out;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px);}
+  to { opacity: 1; transform: translateX(0);}
 }
 
 .modalText {
@@ -1000,652 +841,12 @@ html, body {
   margin-top: 8px;
 }
 
-.loweredCard {
-  margin-top: -32px; 
-}
-
-.largerImage {
-  width: 200px;   
-  height: 200px;
-  object-fit: contain;
-  margin-bottom: 24px;
-  margin-top: 10px; 
-}
-
-.imgMargin3kg {
-  margin-top: 22px; 
-  margin-bottom: 34px;
-}
-
-.imgMarginBulk {
-  margin-top: 20px; 
-  margin-bottom: 34px;
-}
-
-.bulkTitle {
-  margin-top: -19px; 
-}
-
-.bulkType {
-  margin-top: -10px; 
-}
-
-.bulkSizes {
-  margin-top: 12px; 
-}
-
 .chickenMeatCategory {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-}
-
-.carouselRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;   /* This centers the cards horizontally */
-  align-items: center;
-  gap: 24px;
-  overflow-x: auto;
-  padding: 16px 0;
-  scroll-behavior: smooth;
-  /* Hide scrollbar for a cleaner look (optional) */
-  scrollbar-width: none; /* Firefox */
-}
-.carouselRow::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-.carouselCards {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  width: auto;
-  min-height: 420px;    
-  padding: 12px 12px;  
-  overflow: visible;    
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.carouselCards::-webkit-scrollbar {
-  display: none;
-}
-
-.meatProductCard {
-  min-width: 220px;
-  max-width: 260px;
-  width: 100%;
-}
-
-/* Optional: Hide arrows on small screens */
-@media (max-width: 600px) {
-  .carouselArrow {
-    display: none;
-  }
-  .carouselRow {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .aboutContainer {
-    gap: 100px;
-  }
-
-  .servicesGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .serviceCard {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .productCard {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .productsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .contactContainer {
-    gap: 60px;
-  }
-}
-
-@media (max-width: 900px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px 12px 10px;
-    gap: 10px;
-  }
-  .brand {
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-  }
-  .brandText {
-    font-size: 28px;
-  }
-  .nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .navLink {
-    width: auto;
-    min-width: 90px;
-    margin-bottom: 4px;
-    font-size: 14px;
-    padding: 0 12px;
-  }
-  .serviceCard:last-child {
-    max-width: 100% !important;
-    margin: 0 !important;
-    grid-column: auto !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 6px 8px;
-    gap: 8px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    width: 100%;
-  }
-  .logoMark {
-    margin: 0;
-    align-self: center;
-  }
-  .brandText {
-    margin: 0;
-    align-self: center;
-    font-size: 20px;
-    line-height: 1;
-  }
-  .nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .navLink {
-    min-width: 70px;           /* Make buttons smaller */
-    font-size: 11px;
-    padding: 0 6px;
-    height: 28px;
-    margin-bottom: 0;          /* Remove bottom margin to keep in one line */
-    white-space: nowrap;       /* Prevent text from wrapping */
-  }
-}
-
-@media (max-width: 900px) {
-  .brandText {
-    font-size: 34px;
-  }
-
-  .heroInner {
-    padding: 62px 26px;
-  }
-
-  .title {
-    font-size: 34px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-  }
-
-  .aboutUs {
-    padding: 40px 20px;
-    height: auto;
-  }
-  .aboutContainer {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .aboutImage {
-    width: 300px;
-    height: 300px;
-  }
-  .aboutTitle {
-    font-size: 36px;
-  }
-  .aboutText {
-    font-size: 16px;
-  }
-
-  .servicesGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .serviceCard {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .productsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .productCard {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .contactContainer {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .contactFormWrapper {
-    max-width: 100%;
-  }
-
-  .visitTitle {
-    font-size: 36px;
-  }
-
-  .mapContainer {
-    height: 350px;
-  }
-
-  .productCard {
-    width: 160px;
-    height: 270px;
-    padding: 16px 8px;
-  }
-  .eggCardsRow,
-  .wholeChickenCardsRow,
-  .poultryFeedsCardsRow,
-  .carouselCards {
-    gap: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .page {
-    background-attachment: scroll;
-  }
-
-  .header {
-    padding: 16px 16px 10px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .brand {
-    width: 100%;
-  }
-
-  .nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .hero {
-    height: 60vh;
-    border-radius: 20px;
-  }
-
-  .heroInner {
-    padding: 40px 20px;
-    max-width: 100%;
-  }
-
-  .title {
-    font-size: 28px;
-    margin: 0 0 16px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    max-width: 100%;
-    margin: 0 0 20px;
-  }
-
-  .cta {
-    height: 40px;
-    padding: 0 16px;
-    font-size: 14px;
-  }
-
-  .aboutUs {
-    background-size: cover;
-    height: auto;
-    padding: 40px 20px;
-    margin-top: 20px;
-  }
-
-  .aboutContainer {
-    padding: 0 20px;
-    gap: 30px;
-  }
-
-  .aboutTitle {
-    font-size: 28px;
-    margin: 0 0 16px;
-  }
-
-  .aboutText {
-    font-size: 18px;
-  }
-
-  .services {
-    padding: 40px 20px;
-    height: auto;
-  }
-
-  .servicesTitle {
-    font-size: 36px;
-    margin: 0 0 40px;
-  }
-
-  .serviceCard {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-
-  .serviceCardTitle {
-    font-size: 20px;
-  }
-
-  .serviceCard p {
-    font-size: 16px;
-  }
-
-  .products {
-    padding: 40px 20px;
-    height: auto;
-  }
-
-  .productsTitle {
-    font-size: 36px;
-    margin: 0 0 40px;
-  }
-
-  .productCard {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-
-  .productCardTitle {
-    font-size: 20px;
-  }
-
-  .productCard p {
-    font-size: 16px;
-  }
-
-  .contact {
-    padding: 40px 20px;
-    height: auto;
-  }
-
-  .contactContainer {
-    padding: 0;
-    gap: 30px;
-  }
-
-  .contactTitle {
-    font-size: 36px;
-  }
-
-  .contactItem {
-    margin-bottom: 25px;
-    font-size: 18px;
-    gap: 15px;
-  }
-
-  .consultationTitle {
-    font-size: 24px;
-  }
-
-  .formGroup input,
-  .formGroup textarea {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  .visitFarm {
-    padding: 40px 20px;
-    min-height: 60vh;
-  }
-
-  .visitTitle {
-    font-size: 32px;
-    margin: 0 0 40px;
-  }
-
-  .mapContainer {
-    height: 350px;
-  }
-}
-
-@media (max-width: 600px) {
-  .carouselCards {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    overflow-x: auto !important;
-    overflow-y: hidden;
-    padding-bottom: 8px;
-    scrollbar-width: thin;
-    -ms-overflow-style: auto;
-  }
-  .carouselCards::-webkit-scrollbar {
-    height: 6px;
-    background: #e0cfa3;
-  }
-  .carouselCards::-webkit-scrollbar-thumb {
-    background: #b4a078;
-    border-radius: 3px;
-  }
-
-  .productsTitle {
-    font-size: 1.5rem;
-    padding: 0 8px;
-  }
-  .productsHeader {
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-}
-
-@media (max-width: 520px) {
-  .header {
-    padding: 12px 12px 8px;
-  }
-
-  .brandText {
-    font-size: 24px;
-  }
-
-  .navLink {
-    height: 30px;
-    padding: 0 12px;
-    font-size: 12px;
-  }
-
-  .hero {
-    height: 50vh;
-    border-radius: 16px;
-  }
-
-  .heroInner {
-    padding: 30px 16px;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    margin: 0 0 16px;
-  }
-
-  .ctaRow {
-    gap: 10px;
-  }
-
-  .cta {
-    height: 36px;
-    padding: 0 12px;
-    font-size: 12px;
-  }
-
-  .ctaIcon {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-  }
-
-  .aboutContainer {
-    padding: 0 16px;
-  }
-
-  .aboutTitle {
-    font-size: 24px;
-  }
-
-  .aboutText {
-    font-size: 16px;
-  }
-
-  .aboutImage {
-    max-width: 200px;
-    height: 300px;
-  }
-
-  .servicesTitle {
-    font-size: 28px;
-    margin: 0 0 30px;
-  }
-
-  .serviceCard {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .serviceCardTitle {
-    font-size: 18px;
-  }
-
-  .serviceCard p {
-    font-size: 14px;
-  }
-
-  .productsTitle {
-    font-size: 28px;
-    margin: 0 0 30px;
-  }
-
-  .productCard {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .productCardTitle {
-    font-size: 18px;
-  }
-
-  .productCard p {
-    font-size: 14px;
-  }
-
-  .contactTitle {
-    font-size: 28px;
-    margin: 0 0 30px;
-  }
-
-  .contactItem {
-    font-size: 16px;
-    margin-bottom: 20px;
-    gap: 12px;
-  }
-
-  .contactItem svg,
-  .contactItem img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .consultationTitle {
-    font-size: 20px;
-    margin: 0 0 20px;
-  }
-
-  .formGroup input,
-  .formGroup textarea {
-    padding: 10px;
-    font-size: 13px;
-    border-radius: 8px;
-  }
-  .submitBtn {
-    height: 44px;
-    padding: 0 24px;
-    font-size: 14px;
-  }
-
-  .visitTitle {
-    font-size: 24px;
-    margin: 0 0 30px;
-  }
-
-  .mapContainer {
-    height: 340px;
-  }
-
-  .modalContent {
-    padding: 20px;
-  }
-
-  .modalTitle {
-    font-size: 24px;
-  }
-
-  .carouselImage {
-    width: 100%;
-    height: 200px;
-  }
-
-  .carouselBtn {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
-}
-
-
-/* Make sure only .productsSection has the background you want */
-.productsSection {
-  background: url('/images/BG2.png') center center/cover no-repeat;
-  
-}
-
-.productsSection {
-  padding-top: 48px; 
 }
 
 .poultryFeedsCardsRow {
@@ -1724,49 +925,193 @@ html, body {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.buttonGroup {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+.meatGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 32px 24px; /* row gap, column gap */
+  justify-items: center;
+  margin: 32px auto; 
+  width: fit-content; 
 }
 
-.customBtn {
-  background: #fff8dc;
-  border: 2px solid #444;
-  border-radius: 2rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: background 0.2s, box-shadow 0.2s;
+/* Responsive styles preserved as in your original file */
+@media (max-width: 1200px) {
+  .aboutContainer {
+    gap: 100px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .productCard {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactContainer {
+    gap: 60px;
+  }
 }
 
-.customBtn:hover {
-  background: #ffe082;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.icon {
-  margin-left: 0.5rem;
-  font-size: 1.1em;
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 12px 10px;
+    gap: 10px;
+  }
+  .brand {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+  .brandText {
+    font-size: 28px;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navLink {
+    width: auto;
+    min-width: 90px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+  .serviceCard:last-child {
+    max-width: 100% !important;
+    margin: 0 !important;
+    grid-column: auto !important;
+  }
+  .brandText {
+    font-size: 34px;
+  }
+  .heroInner {
+    padding: 62px 26px;
+  }
+  .title {
+    font-size: 34px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+  .aboutUs {
+    padding: 40px 20px;
+    height: auto;
+  }
+  .aboutContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .aboutImage {
+    width: 300px;
+    height: 300px;
+  }
+  .aboutTitle {
+    font-size: 36px;
+  }
+  .aboutText {
+    font-size: 16px;
+  }
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  .serviceCard {
+    width: 100%;
+    max-width: 500px;
+  }
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+  .productCard {
+    width: 100%;
+    max-width: 500px;
+  }
+  .contactContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .contactFormWrapper {
+    max-width: 100%;
+  }
+  .visitTitle {
+    font-size: 36px;
+  }
+  .mapContainer {
+    height: 350px;
+  }
+  .productCard {
+    width: 160px;
+    height: 270px;
+    padding: 16px 8px;
+  }
+  .eggCardsRow,
+  .wholeChickenCardsRow,
+  .poultryFeedsCardsRow {
+    gap: 16px;
+  }
 }
 
 @media (max-width: 600px) {
-  .nav {
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: center; /* Keep centered on small screens */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 6px 8px;
+    gap: 8px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
     width: 100%;
   }
+  .logoMark {
+    margin: 0;
+    align-self: center;
+  }
+  .brandText {
+    margin: 0;
+    align-self: center;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+    .nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;           /* Prevent wrapping */
+    justify-content: center;     /* Center all buttons */
+    gap: 8px;                    /* Even spacing */
+    padding-bottom: 4px;
+  }
   .navLink {
-    min-width: 70px;
+    min-width: 60px;
     font-size: 11px;
-    padding: 0 6px;
+    padding: 0 12px;
     height: 28px;
     margin-bottom: 0;
     white-space: nowrap;
+    border-radius: 999px;
   }
   .aboutContainer {
     flex-direction: column;
@@ -1780,128 +1125,24 @@ html, body {
     margin-top: 24px;
     margin-bottom: 24px;
   }
-}
-
-@media (max-width: 600px) {
   .servicesTitle {
-    margin-top: 40px !important; /* Increase space above the heading */
+    margin-top: 55px !important;
   }
   .servicesGrid {
-    margin-top: 24px !important; /* Increase space above the cards */
+    margin-top: -25px !important;
   }
-}
-
-@media (max-width: 600px) {
-  .servicesTitle {
-    margin-top: 55px !important; /* Increase space above the heading */
-  }
-  .servicesGrid {
-    margin-top: -25px !important; /* Increase space above the cards */
-  }
-}
-
-@media (max-width: 600px) {
   .aboutTitle {
-    margin-top: 45px !important; /* Pushes "About Us" heading lower */
+    margin-top: 45px !important;
   }
   .aboutContainer {
-    padding-top: 24px !important; /* Pushes the whole About section content lower */
+    padding-top: 24px !important;
   }
-}
-
-@media (max-width: 600px) {
   .brandText {
-    margin-top: 24px !important; /* Adjust as needed */
+    margin-top: 24px !important;
   }
-}
-
-@media (max-width: 600px) {
   .mapContainer {
-    height: 560px !important; /* Increase this value for more height */
+    height: 560px !important;
   }
-}
-
-@media (max-width: 600px) {
-  .carouselCards {
-    overflow-x: hidden !important;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    padding: 0;
-    position: relative;
-  }
-  .meatProductCard {
-    min-width: 75vw !important;
-    max-width: 75vw !important;
-    width: 75vw !important;
-    margin: 0 auto;
-    border-radius: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .meatProductCard {
-    width: 320px !important;
-    max-width: 95vw !important;
-    min-width: 0 !important;
-    margin: 0 auto !important;
-    border-radius: 28px;
-    padding: 30px !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-.shellcoBrand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.shellcoLogo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.shellcoText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.shellcoMain {
-  font-size: 38px;
-  font-weight: 900;
-  color: #0b0b0b;
-  font-family: 'Archivo Black', sans-serif;
-}
-
-.shellcoSub {
-  font-size: 28px;
-  font-weight: 900;
-  color: #0b0b0b;
-  font-family: 'Archivo Black', sans-serif;
-  margin-top: -2px;
-  letter-spacing: 0.5px;
-}
-
-@media (max-width: 600px) {
-  .meatProductCard {
-    min-width: 400vw !important;
-    max-width: 400vw !important;
-    width: 400vw !important;
-    margin: 0 auto !important;
-  }
-}
-
-@media (max-width: 600px) {
   .contactTitle {
     margin-top: 32px !important;
   }
@@ -1913,11 +1154,302 @@ html, body {
   }
 }
 
-.meatGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-  gap: 32px 24px; /* row gap, column gap */
-  justify-items: center;
-  margin: 32px auto; /* centers the grid horizontally */
-  width: fit-content; /* grid is only as wide as its content */
+@media (max-width: 768px) {
+  .page {
+    background-attachment: scroll;
+  }
+  .header {
+    padding: 16px 16px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .brand {
+    width: 100%;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .hero {
+    height: 60vh;
+    border-radius: 20px;
+  }
+  .heroInner {
+    padding: 40px 20px;
+    max-width: 100%;
+  }
+  .title {
+    font-size: 28px;
+    margin: 0 0 16px;
+  }
+  .subtitle {
+    font-size: 14px;
+    max-width: 100%;
+    margin: 0 0 20px;
+  }
+  .cta {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+  .aboutUs {
+    background-size: cover;
+    height: auto;
+    padding: 40px 20px;
+    margin-top: 20px;
+  }
+  .aboutContainer {
+    padding: 0 20px;
+    gap: 30px;
+  }
+  .aboutTitle {
+    font-size: 28px;
+    margin: 0 0 16px;
+  }
+  .aboutText {
+    font-size: 18px;
+  }
+  .services {
+    padding: 40px 20px;
+    height: auto;
+  }
+  .servicesTitle {
+    font-size: 36px;
+    margin: 0 0 40px;
+  }
+  .serviceCard {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  .serviceCardTitle {
+    font-size: 20px;
+  }
+  .serviceCard p {
+    font-size: 16px;
+  }
+  .products {
+    padding: 40px 20px;
+    height: auto;
+  }
+  .productsTitle {
+    font-size: 36px;
+    margin: 0 0 40px;
+  }
+  .productCard {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  .productCardTitle {
+    font-size: 20px;
+  }
+  .productCard p {
+    font-size: 16px;
+  }
+  .contact {
+    padding: 40px 20px;
+    height: auto;
+  }
+  .contactContainer {
+    padding: 0;
+    gap: 30px;
+  }
+  .contactTitle {
+    font-size: 36px;
+  }
+  .contactItem {
+    margin-bottom: 25px;
+    font-size: 18px;
+    gap: 12px;
+  }
+  .consultationTitle {
+    font-size: 24px;
+  }
+  .formGroup input,
+  .formGroup textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .visitFarm {
+    padding: 40px 20px;
+    min-height: 60vh;
+  }
+  .visitTitle {
+    font-size: 32px;
+    margin: 0 0 40px;
+  }
+  .mapContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    padding: 12px 12px 8px;
+  }
+  .brandText {
+    font-size: 24px;
+  }
+  .navLink {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+  .hero {
+    height: 50vh;
+    border-radius: 16px;
+  }
+  .heroInner {
+    padding: 30px 16px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .subtitle {
+    font-size: 13px;
+    margin: 0 0 16px;
+  }
+  .ctaRow {
+    gap: 10px;
+  }
+  .cta {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+  .ctaIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+  .aboutContainer {
+    padding: 0 16px;
+  }
+  .aboutTitle {
+    font-size: 24px;
+  }
+  .aboutText {
+    font-size: 16px;
+  }
+  .aboutImage {
+    max-width: 200px;
+    height: 300px;
+  }
+  .servicesTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+  .serviceCard {
+    width: 100%;
+    padding: 16px;
+  }
+  .serviceCardTitle {
+    font-size: 18px;
+  }
+  .serviceCard p {
+    font-size: 14px;
+  }
+  .productsTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+  .productCard {
+    width: 100%;
+    padding: 16px;
+  }
+  .productCardTitle {
+    font-size: 18px;
+  }
+  .productCard p {
+    font-size: 14px;
+  }
+  .contactTitle {
+    font-size: 28px;
+    margin: 0 0 30px;
+  }
+  .contactItem {
+    font-size: 16px;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  .contactItem svg,
+  .contactItem img {
+    width: 40px;
+    height: 40px;
+  }
+  .consultationTitle {
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+  .formGroup input,
+  .formGroup textarea {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+  .submitBtn {
+    height: 44px;
+    padding: 0 24px;
+    font-size: 14px;
+  }
+  .visitTitle {
+    font-size: 24px;
+    margin: 0 0 30px;
+  }
+  .mapContainer {
+    height: 340px;
+  }
+  .modalContent {
+    padding: 20px;
+  }
+  .modalTitle {
+    font-size: 24px;
+  }
+  .carouselImage {
+    width: 100%;
+    height: 200px;
+  }
+  .carouselBtn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+
+/* Products Section background and padding */
+.productsSection {
+  background: url('/images/BG2.png') center center/cover no-repeat;
+  padding-top: 48px; 
+}
+
+/* Responsive: 2 columns for Chicken Meat Pieces grid on mobile */
+@media (max-width: 900px) {
+  .meatGrid {
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 18px 12px;                /* adjust gap as needed */
+    width: 100%;
+    margin: 0 auto;
+  }
+  .meatProductCard {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Optional: For very small screens, keep 2 columns but reduce gap/padding */
+@media (max-width: 600px) {
+  .meatGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 6px;
+    width: 100%;
+  }
+  .meatProductCard {
+    padding: 10px 4px;
+    height: auto;
+  }
 }

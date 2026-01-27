@@ -35,3 +35,46 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.listen(3001, () => console.log('Server running on port 3001'));
+
+.chicken-section {
+  padding: 2rem;
+}
+
+.chicken-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.chicken-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.chicken-tile {
+  background: #e0c891;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.chicken-tile img {
+  width: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.chicken-carousel {
+  display: none;
+}
+
+/* Responsive: Show carousel, hide grid on small screens */
+@media (max-width: 768px) {
+  .chicken-grid {
+    display: none;
+  }
+  .chicken-carousel {
+    display: block;
+  }
+}

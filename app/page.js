@@ -8,26 +8,26 @@ import 'leaflet/dist/leaflet.css';
 
 const meatProducts = [
   {
-    name: "Chicken Leg",
-    image: "/images/Chicken/Chickenleg.png",
-    description: "Juicy chicken leg, perfect for grilling.",
-    kilos: "Available: 1kg, 2kg, 5kg",
-    bulk: "Bulk: 10kg+ (special price)"
-  },
-  {
-    name: "Chicken Wing",
-    image: "/images/Chicken/Chickenwing.png",
-    description: "Crispy chicken wings, great for snacks.",
-    kilos: "Available: 1kg, 2kg, 5kg",
-    bulk: "Bulk: 10kg+ (special price)"
-  },
-  {
-    name: "Chicken Breast",
-    image: "/images/Chicken/Chickenbreast.png",
-    description: "Lean chicken breast, great for healthy meals.",
-    kilos: "Available: 1kg, 2kg, 5kg",
-    bulk: "Bulk: 10kg+ (special price)"
-  },
+  name: "Chicken Leg",
+  image: "/images/Chicken/Chickenleg.png",
+  description: "Juicy chicken leg, perfect for grilling.",
+  kilos: "Available: 1kg, 2kg, 5kg",
+  bulkOrder: "Bulk: 10kg+ (special price)"
+},
+{
+  name: "Chicken Wing",
+  image: "/images/Chicken/Chickenwing.png",
+  description: "Crispy chicken wings, great for snacks.",
+  kilos: "Available: 1kg, 2kg, 5kg",
+  bulkOrder: "Bulk: 10kg+ (special price)"
+},
+{
+  name: "Chicken Breast",
+  image: "/images/Chicken/Chickenbreast.png",
+  description: "Lean chicken breast, great for healthy meals.",
+  kilos: "Available: 1kg, 2kg, 5kg",
+  bulkOrder: "Bulk: 10kg+ (special price)"
+},
   {
     name: "Chicken Thigh",
     image: "/images/Chicken/Chickenthigh1.png",
@@ -588,7 +588,7 @@ export default function Home() {
                 <div className={styles.formGroup}>
                   <textarea name="message" placeholder="Your Message" required></textarea>
                 </div>
-                <input type="hidden" name="_next" value="https://shell-co.vercel.app/" />
+                <input type="hidden" name="_next" value="https://shell-co.vercel.app/thank-you" />
                 <button type="submit" className={styles.submitBtn}>
                   Send Message
                   <span className={styles.ctaIcon}>↗</span>
